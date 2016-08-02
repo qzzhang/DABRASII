@@ -303,7 +303,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DailyQCLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DailyQCLog";
+            this.Text = "Daily QC Log";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyQCLog_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

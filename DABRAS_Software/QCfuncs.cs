@@ -72,9 +72,10 @@ namespace DABRAS_Software
             }
 
             this.OperationThread_QCBG = null;
-            SetGUI(false);
-            QCBG.RequestStop();
-            QCBG = null;
+            this.resetTabButtons();
+            this.SetGUI(false);
+            this.QCBG.RequestStop();
+            this.QCBG = null;
         }
 
         public bool QCbackgroundPassed()
@@ -132,7 +133,7 @@ namespace DABRAS_Software
 
                     //Add QC object to List
                     QCCalResultNode NewResult = new QCCalResultNode(DateTime.Now, TypeOfQC.Beta, QCAB.GetAlphaNCPM(), QCAB.GetBetaNCPM(), QCAB.GetBadgeNo(), true, "Passed", QCAB.GetName(), QCAB.GetSampleTime());
-                    QC_List.Add(NewResult);
+                    this.QC_List.Add(NewResult);
 
                     RF.SetDailyCalibratedTimespan(QCAB.GetSampleTime() * QCAB.GetNumSamples());
 
@@ -142,11 +143,8 @@ namespace DABRAS_Software
                     this.frmParent.updFamilyAndSource(this.ListOfFamily, this.ListOfSources);
                 }
 
-                this.setCheckButtons();//later should be removed when stricter checking on pass is reinforced
-
                 this.abPassed = true;
                 this.frmParent.EnableRSCForm(true);
-
                 this.setCheckButtons();
             }
             else if ((!(QCAB.WasTestPassed())) && QCAB.WasTestCompleted())
@@ -155,16 +153,17 @@ namespace DABRAS_Software
                 this.abPassed = false;
                 this.frmParent.EnableRSCForm(false);
             }
-            this.OperationThread_QCAB = null;
 
-            SetGUI(false);
+            this.OperationThread_QCAB = null;
+            this.resetTabButtons();
+            this.SetGUI(false);
 
             //Write results to files
             this.autoWriteAB2Files();
             this.writeQCdata();
 
-            QCAB.RequestStop(); //to be safe
-            QCAB = null;
+            this.QCAB.RequestStop(); //to be safe
+            this.QCAB = null;
         }
 
         public bool QCAlphaBetaPassed()
@@ -855,7 +854,7 @@ namespace DABRAS_Software
                         break;
                     }
 
-                    if (IncomingData != null && IncomingData.ElTime > 5)
+                    if (IncomingData != null && IncomingData.ElTime > 3)
                     {
                         this.DABRAS.Write_To_Serial_Port("t");
                         Thread.Sleep(250);
@@ -957,8 +956,8 @@ namespace DABRAS_Software
         private double AlphaNCPM;
         private double BetaNCPM;
 
-        private int AlphaBackground;
-        private int BetaBackground;
+        private double AlphaBackground;
+        private double BetaBackground;
 
         private DateTime TestStarted;
 
@@ -973,7 +972,7 @@ namespace DABRAS_Software
         #endregion
 
         #region Constructor
-        public QCAlphaBetaListener(DABRAS _DABRAS, int _SampleTime, int _NumSamples, DataGridView _QC_Table, double _Hi, double _Lo, bool _IsAlpha, int _AlphaBG, int _BetaBG, DateTime _Today, int _BadgeNo, string _Name)
+        public QCAlphaBetaListener(DABRAS _DABRAS, int _SampleTime, int _NumSamples, DataGridView _QC_Table, double _Hi, double _Lo, bool _IsAlpha, double _AlphaBG, double _BetaBG, DateTime _Today, int _BadgeNo, string _Name)
         {
             this.DABRAS = _DABRAS;
             this.QC_Table = _QC_Table;
@@ -1023,10 +1022,9 @@ namespace DABRAS_Software
             catch
             {
                 MessageBox.Show("Error: Connection lost by QC.");
-                //this.frmCaller.refreshConnectStatus();
+                this.frmCaller.refreshConnectStatus();
                 DABRAS.DisableWatchdog();
                 BackgroundThreadFinished(this, null);
-                return;
             }
         }
         private string BuildToolTipText(double avga, double avgb,bool lessAlphaLo, bool greaterAlphaHi, bool lessBetaLo, bool greaterBetaHi)
@@ -1317,9 +1315,9 @@ namespace DABRAS_Software
             DABRAS.Cut();
 
             //Set aquisition time
-            DABRAS.Write_To_Serial_Port("t");
+            DABRAS.Write_To_Serial_Port("t");//Set the acquisition time
             Thread.Sleep(250);
-            DABRAS.Write_To_Serial_Port(Convert.ToString(SampleTime));
+            DABRAS.Write_To_Serial_Port(Convert.ToString(SampleTime));//must be within one second
             Thread.Sleep(500);
 
             //Clear any data left in the buffer
@@ -1348,18 +1346,18 @@ namespace DABRAS_Software
                     DABRAS.KickWatchdog();
 
                     if (IncomingData != null)
-                    {
+                    {//Aquisition time setting is a success or failure can be determined by examining the TargetTime value
                         if (IncomingData.ElTime == 0 && IncomingData.TargetTime == SampleTime)
                         {
                             break;
                         }
 
-                        if (IncomingData.ElTime > 5)
+                        if (IncomingData.ElTime > 3)//in seconds
                         {
                             DABRAS.Write_To_Serial_Port("t");
                             Thread.Sleep(250);
                             DABRAS.Write_To_Serial_Port(Convert.ToString(SampleTime));
-                            DABRAS.Write_To_Serial_Port("g");
+                            DABRAS.Write_To_Serial_Port("g");//Begin Acquisition
                         }
                     }
                     else

@@ -404,22 +404,46 @@ namespace DABRAS_Software
                 return false;
             }
 
-            this.initDataGrid();
+            this.initDataGrid();           
             this.ClearDataGridView(this.ShortDataGridView);
+
+            this.SetGUI(true);
+            this.enableTabButtons(false);
+            return true;
+        }
+
+        private void enableTabButtons(bool val)
+        {
+            this.btnBackgroundCheck.Enabled = val;
+            this.btnAlphaCheck.Enabled = val;
+            this.btnBetaCheck.Enabled = val;
+        }
+
+        private void initTabButtons()
+        {
             if (this.Type == TypeOfQC.Background)
             {
                 this.btnAlphaCheck.Enabled = false;
                 this.btnBetaCheck.Enabled = false;
             }
-            else if(this.Type == TypeOfQC.Alpha)
+            else if (this.Type == TypeOfQC.Alpha)
                 this.btnBetaCheck.Enabled = false;
-
-            SetGUI(true);
-            return true;
         }
 
-        private void btnStartCount_Click(object sender, EventArgs e)
+        private void resetTabButtons()
         {
+            if (this.Type == TypeOfQC.Background)
+            {
+                this.btnBackgroundCheck.Enabled = true;
+                this.btnAlphaCheck.Enabled = true;
+                this.btnBetaCheck.Enabled = false;
+            }
+            else 
+                this.enableTabButtons(true);
+        }
+
+        public void btnStartCount_Click(object sender, EventArgs e)
+        {          
             if(!this.Prepare4Start())
                 return;
             if (this.Type == TypeOfQC.Background)
@@ -440,12 +464,12 @@ namespace DABRAS_Software
 
                 if (IsAlpha)
                 {
-                    QCAB = new QCAlphaBetaListener(this.DABRAS, Sampletime, NumSamples, this.ShortDataGridView, this.AlphaHi, this.AlphaLo, IsAlpha, Convert.ToInt32(R.GetDailyAlphaCPM()), Convert.ToInt32(R.GetDailyBetaCPM()), DateTime.Now, BadgeNo, this.Name_TB.Text);
+                    QCAB = new QCAlphaBetaListener(this.DABRAS, Sampletime, NumSamples, this.ShortDataGridView, this.AlphaHi, this.AlphaLo, IsAlpha, R.GetDailyAlphaCPM(), R.GetDailyBetaCPM(), DateTime.Now, BadgeNo, this.Name_TB.Text);
                     QCAB.setCallerForm(this.frmParent);
                 }
                 else
                 {
-                    QCAB = new QCAlphaBetaListener(this.DABRAS, Sampletime, NumSamples, this.ShortDataGridView, this.BetaHi, this.BetaLo, IsAlpha, Convert.ToInt32(R.GetDailyAlphaCPM()), Convert.ToInt32(R.GetDailyBetaCPM()), DateTime.Now, BadgeNo, this.Name_TB.Text);
+                    QCAB = new QCAlphaBetaListener(this.DABRAS, Sampletime, NumSamples, this.ShortDataGridView, this.BetaHi, this.BetaLo, IsAlpha, R.GetDailyAlphaCPM(), R.GetDailyBetaCPM(), DateTime.Now, BadgeNo, this.Name_TB.Text);
                     QCAB.setCallerForm(this.frmParent);
                 }
 
@@ -677,7 +701,7 @@ namespace DABRAS_Software
         #endregion
 
         #region Stop Handler
-        private void StopButton_Click(object sender, EventArgs e)
+        public void StopButton_Click(object sender, EventArgs e)
         {
             if (QCAB != null)
             {

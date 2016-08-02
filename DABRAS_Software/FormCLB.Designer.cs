@@ -297,10 +297,10 @@
             this.ImageSaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.YellowGreen;
             this.ImageSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImageSaveButton.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImageSaveButton.Location = new System.Drawing.Point(991, 340);
+            this.ImageSaveButton.Location = new System.Drawing.Point(953, 369);
             this.ImageSaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.ImageSaveButton.Name = "ImageSaveButton";
-            this.ImageSaveButton.Size = new System.Drawing.Size(182, 52);
+            this.ImageSaveButton.Size = new System.Drawing.Size(224, 57);
             this.ImageSaveButton.TabIndex = 122;
             this.ImageSaveButton.Text = "Save Image";
             this.clbTooltip.SetToolTip(this.ImageSaveButton, "Save the results to an image file");
@@ -448,10 +448,10 @@
             this.Stop_Count_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Stop_Count_Button.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stop_Count_Button.ForeColor = System.Drawing.Color.Red;
-            this.Stop_Count_Button.Location = new System.Drawing.Point(991, 282);
+            this.Stop_Count_Button.Location = new System.Drawing.Point(953, 198);
             this.Stop_Count_Button.Margin = new System.Windows.Forms.Padding(4);
             this.Stop_Count_Button.Name = "Stop_Count_Button";
-            this.Stop_Count_Button.Size = new System.Drawing.Size(182, 50);
+            this.Stop_Count_Button.Size = new System.Drawing.Size(224, 98);
             this.Stop_Count_Button.TabIndex = 119;
             this.Stop_Count_Button.Text = "Stop Counting";
             this.clbTooltip.SetToolTip(this.Stop_Count_Button, "Stop the current activities");
@@ -593,10 +593,10 @@
             this.btnSetHVCtrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetHVCtrl.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetHVCtrl.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.btnSetHVCtrl.Location = new System.Drawing.Point(991, 225);
+            this.btnSetHVCtrl.Location = new System.Drawing.Point(953, 304);
             this.btnSetHVCtrl.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetHVCtrl.Name = "btnSetHVCtrl";
-            this.btnSetHVCtrl.Size = new System.Drawing.Size(181, 49);
+            this.btnSetHVCtrl.Size = new System.Drawing.Size(223, 57);
             this.btnSetHVCtrl.TabIndex = 125;
             this.btnSetHVCtrl.Text = "Set HV Control";
             this.btnSetHVCtrl.UseVisualStyleBackColor = false;

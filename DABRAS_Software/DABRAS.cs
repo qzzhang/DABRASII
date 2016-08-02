@@ -363,33 +363,28 @@ namespace DABRAS_Software
             {
                 //MessageBox.Show(String.Format("Attempting to disconnect communication on port {0}", this.VCP_Instance));//disconnect the current VCP_Instance
 
-                if (SP.IsOpen)
+                if (this.SP.IsOpen)
                 {
-                    SP.Write("h");
+                    //this.SP.Write("h");
 
-                    ClearRaw();
-                    ClearSerialPacket();
-                    //Throw exception if port isn't opened
-                    string Handshake = SP.ReadLine();
+                    this.ClearRaw();
+                    this.ClearSerialPacket();
+
+                    /*string Handshake = SP.ReadLine();
 
                     //Throw exception if DABRAS is not authentic
                     //if (Handshake.Replace("\r", "") != "ARGONNE")//QZ: currently we only allow one com port connection, so this statement will always evaluate to true
                     {
                         this.VCP_Instance = "";
                         this.Connected = false;
-                        //add the follow two lines to clear the serial port--QZ
-                        SP.Close();
-                        SP = null;
 
                         return false;
-                    }
+                    }*/
 
-                    //If here, we are still connected. Don't touch anything!
-                    //this.Connected = true;
-
-                    //return true;
+                    //add the follow two lines to clear the serial port--QZ
+                    this.SP.Close();
+                    this.SP = null;
                 }
-
                 this.VCP_Instance = "";
                 this.Connected = false;
                 return false;
