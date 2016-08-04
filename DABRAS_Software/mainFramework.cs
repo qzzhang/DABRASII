@@ -281,7 +281,10 @@ namespace DABRAS_Software
 
             return ReturnString;
         }
-
+        public void enableMainTab(bool val)
+        {
+            this.mainTab.Enabled = val;
+        }
         private void createConfgPathFile()
         {
             //Serialize the data at the start of the mainFramework form

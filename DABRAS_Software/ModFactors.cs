@@ -12,7 +12,7 @@ namespace DABRAS_Software
         private double Alpha_SelfAbsorbtion;
         private double Beta_SelfAbsorbtion;
         private double Beta_Backscatter;
-        private double Contaminant_Removal_Frac;
+        //private double Contaminant_Removal_Frac;
         private double Sample_Area;
         #endregion
          
@@ -21,12 +21,12 @@ namespace DABRAS_Software
         {
             this.SetDefaultModFactors();
         }
-        public ModFactors(double _ASA, double _BSA, double _BBS, double _CRF, double _SA)
+        public ModFactors(double _ASA, double _BSA, double _BBS, double _SA)
         {
             this.Alpha_SelfAbsorbtion = _ASA;
             this.Beta_SelfAbsorbtion = _BSA;
             this.Beta_Backscatter = _BBS;
-            this.Contaminant_Removal_Frac = _CRF;
+            //this.Contaminant_Removal_Frac = _CRF;
             this.Sample_Area = _SA;
         }
         #endregion
@@ -57,25 +57,18 @@ namespace DABRAS_Software
             return this.Beta_Backscatter;
         }
 
-        public double GetRemovalFrac()
-        {
-            return this.Contaminant_Removal_Frac;
-        }
-
         public double GetDefaultSampleArea()
         {
             return this.Sample_Area;
         }
-
         #endregion
 
         #region Setters
         public void SetDefaultModFactors()
         {
-            this.Alpha_SelfAbsorbtion = 1.20;
-            this.Beta_SelfAbsorbtion = 1.10;
-            this.Beta_Backscatter = 1.25;
-            this.Contaminant_Removal_Frac = 30;
+            this.Alpha_SelfAbsorbtion = 1.0;
+            this.Beta_SelfAbsorbtion = 1.0;
+            this.Beta_Backscatter = 1.0;
             this.Sample_Area = 100;
         }
         public bool SetAlphaSelfAbsorbtion(double _Val)
@@ -93,12 +86,6 @@ namespace DABRAS_Software
         public bool SetBetaBackscatter(double _Val)
         {
             this.Beta_Backscatter = _Val;
-            return true;
-        }
-
-        public bool SetRemovalFrac(double _Val)
-        {
-            this.Contaminant_Removal_Frac = _Val;
             return true;
         }
 

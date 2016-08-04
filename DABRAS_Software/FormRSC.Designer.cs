@@ -78,14 +78,12 @@
             this.switchToUserValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label35 = new System.Windows.Forms.Label();
             this.Area_Mod_TB = new System.Windows.Forms.TextBox();
-            this.Removal_Percentage_Mod_TB = new System.Windows.Forms.TextBox();
             this.Beta_Backscatter_Mod_TB = new System.Windows.Forms.TextBox();
             this.Beta_Absorption_Mod_TB = new System.Windows.Forms.TextBox();
             this.Alpha_Absorption_Mod_TB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.PauseButton = new System.Windows.Forms.Button();
             this.btn_SetBackgroundType = new System.Windows.Forms.Button();
@@ -118,10 +116,13 @@
             this._400_1200_Energy_Button = new System.Windows.Forms.RadioButton();
             this._1200_Energy_Button = new System.Windows.Forms.RadioButton();
             this._100_200_Energy_Button = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbl_BackgroundType = new System.Windows.Forms.Label();
             this.btnSaveRSCresults = new System.Windows.Forms.Button();
+            this.lblb = new System.Windows.Forms.Label();
+            this.lbla = new System.Windows.Forms.Label();
+            this.lblBetaEff = new System.Windows.Forms.Label();
+            this.lblAlphaEff = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -138,7 +139,7 @@
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.MintCream;
-            this.label43.Location = new System.Drawing.Point(91, 460);
+            this.label43.Location = new System.Drawing.Point(79, 88);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(571, 16);
             this.label43.TabIndex = 140;
@@ -148,12 +149,14 @@
             // Show_Full_Data_Checkbox
             // 
             this.Show_Full_Data_Checkbox.AutoSize = true;
+            this.Show_Full_Data_Checkbox.Checked = true;
+            this.Show_Full_Data_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Show_Full_Data_Checkbox.ForeColor = System.Drawing.Color.MintCream;
-            this.Show_Full_Data_Checkbox.Location = new System.Drawing.Point(755, 469);
+            this.Show_Full_Data_Checkbox.Location = new System.Drawing.Point(755, 485);
             this.Show_Full_Data_Checkbox.Name = "Show_Full_Data_Checkbox";
-            this.Show_Full_Data_Checkbox.Size = new System.Drawing.Size(117, 17);
+            this.Show_Full_Data_Checkbox.Size = new System.Drawing.Size(142, 17);
             this.Show_Full_Data_Checkbox.TabIndex = 136;
-            this.Show_Full_Data_Checkbox.Text = "Show Full Data Set";
+            this.Show_Full_Data_Checkbox.Text = "Show/hide Full Data Set";
             this.Show_Full_Data_Checkbox.UseVisualStyleBackColor = true;
             this.Show_Full_Data_Checkbox.CheckedChanged += new System.EventHandler(this.Show_Full_Data_Checkbox_CheckedChanged);
             // 
@@ -165,6 +168,7 @@
             this.groupBox4.Controls.Add(this.GrossBetaDPMLimit_TB);
             this.groupBox4.Controls.Add(this.LC_Beta_TB);
             this.groupBox4.Controls.Add(this.GrossAlphaDPMLimit_TB);
+            this.groupBox4.Controls.Add(this.label43);
             this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.Gross_Beta_Limit_Label);
             this.groupBox4.Controls.Add(this.label25);
@@ -173,9 +177,9 @@
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.MintCream;
-            this.groupBox4.Location = new System.Drawing.Point(12, 364);
+            this.groupBox4.Location = new System.Drawing.Point(12, 391);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(736, 125);
+            this.groupBox4.Size = new System.Drawing.Size(736, 114);
             this.groupBox4.TabIndex = 135;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Calculated Activity";
@@ -185,7 +189,7 @@
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.MintCream;
-            this.label40.Location = new System.Drawing.Point(651, 52);
+            this.label40.Location = new System.Drawing.Point(656, 57);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(38, 16);
             this.label40.TabIndex = 78;
@@ -195,7 +199,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(326, 56);
+            this.label18.Location = new System.Drawing.Point(325, 61);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 16);
             this.label18.TabIndex = 37;
@@ -206,7 +210,7 @@
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.ForeColor = System.Drawing.Color.MintCream;
-            this.label39.Location = new System.Drawing.Point(651, 25);
+            this.label39.Location = new System.Drawing.Point(656, 30);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(38, 16);
             this.label39.TabIndex = 78;
@@ -214,7 +218,7 @@
             // 
             // GrossBetaDPMLimit_TB
             // 
-            this.GrossBetaDPMLimit_TB.Location = new System.Drawing.Point(545, 51);
+            this.GrossBetaDPMLimit_TB.Location = new System.Drawing.Point(550, 56);
             this.GrossBetaDPMLimit_TB.Name = "GrossBetaDPMLimit_TB";
             this.GrossBetaDPMLimit_TB.Size = new System.Drawing.Size(100, 22);
             this.GrossBetaDPMLimit_TB.TabIndex = 48;
@@ -229,7 +233,7 @@
             // 
             // GrossAlphaDPMLimit_TB
             // 
-            this.GrossAlphaDPMLimit_TB.Location = new System.Drawing.Point(545, 24);
+            this.GrossAlphaDPMLimit_TB.Location = new System.Drawing.Point(550, 29);
             this.GrossAlphaDPMLimit_TB.Name = "GrossAlphaDPMLimit_TB";
             this.GrossAlphaDPMLimit_TB.Size = new System.Drawing.Size(100, 22);
             this.GrossAlphaDPMLimit_TB.TabIndex = 47;
@@ -240,7 +244,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.MintCream;
-            this.label19.Location = new System.Drawing.Point(325, 29);
+            this.label19.Location = new System.Drawing.Point(324, 34);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(61, 16);
             this.label19.TabIndex = 35;
@@ -250,7 +254,7 @@
             // 
             this.Gross_Beta_Limit_Label.AutoSize = true;
             this.Gross_Beta_Limit_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gross_Beta_Limit_Label.Location = new System.Drawing.Point(431, 55);
+            this.Gross_Beta_Limit_Label.Location = new System.Drawing.Point(436, 60);
             this.Gross_Beta_Limit_Label.Name = "Gross_Beta_Limit_Label";
             this.Gross_Beta_Limit_Label.Size = new System.Drawing.Size(108, 16);
             this.Gross_Beta_Limit_Label.TabIndex = 42;
@@ -260,7 +264,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(431, 25);
+            this.label25.Location = new System.Drawing.Point(436, 30);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(115, 16);
             this.label25.TabIndex = 41;
@@ -297,6 +301,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.LightSkyBlue;
             this.groupBox3.Controls.Add(this.label41);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.Beta_Activity_TB);
@@ -314,10 +319,10 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.MintCream;
-            this.groupBox3.Location = new System.Drawing.Point(12, 267);
+            this.groupBox3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.groupBox3.Location = new System.Drawing.Point(12, 265);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1031, 91);
+            this.groupBox3.Size = new System.Drawing.Size(1072, 120);
             this.groupBox3.TabIndex = 134;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Count Rate Data";
@@ -325,149 +330,164 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.MintCream;
-            this.label41.Location = new System.Drawing.Point(267, 59);
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label41.Location = new System.Drawing.Point(267, 72);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(76, 16);
+            this.label41.Size = new System.Drawing.Size(97, 18);
             this.label41.TabIndex = 81;
             this.label41.Text = "Gross CPM";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(520, 57);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label17.Location = new System.Drawing.Point(520, 72);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 16);
+            this.label17.Size = new System.Drawing.Size(76, 18);
             this.label17.TabIndex = 33;
             this.label17.Text = "Net CPM";
             // 
             // Beta_Activity_TB
             // 
-            this.Beta_Activity_TB.Location = new System.Drawing.Point(810, 49);
+            this.Beta_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Beta_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Beta_Activity_TB.Location = new System.Drawing.Point(809, 66);
             this.Beta_Activity_TB.Name = "Beta_Activity_TB";
-            this.Beta_Activity_TB.Size = new System.Drawing.Size(131, 22);
+            this.Beta_Activity_TB.Size = new System.Drawing.Size(131, 27);
             this.Beta_Activity_TB.TabIndex = 45;
             // 
             // Beta_GCPM_TB
             // 
-            this.Beta_GCPM_TB.Location = new System.Drawing.Point(130, 53);
+            this.Beta_GCPM_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Beta_GCPM_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Beta_GCPM_TB.Location = new System.Drawing.Point(130, 66);
             this.Beta_GCPM_TB.Name = "Beta_GCPM_TB";
-            this.Beta_GCPM_TB.Size = new System.Drawing.Size(131, 22);
+            this.Beta_GCPM_TB.Size = new System.Drawing.Size(131, 27);
             this.Beta_GCPM_TB.TabIndex = 80;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(947, 51);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label22.Location = new System.Drawing.Point(943, 71);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(38, 16);
+            this.label22.Size = new System.Drawing.Size(45, 18);
             this.label22.TabIndex = 46;
             this.label22.Text = "DPM";
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.MintCream;
-            this.label42.Location = new System.Drawing.Point(267, 33);
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label42.Location = new System.Drawing.Point(269, 39);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(76, 16);
+            this.label42.Size = new System.Drawing.Size(97, 18);
             this.label42.TabIndex = 79;
             this.label42.Text = "Gross CPM";
             // 
             // Beta_Count_TB
             // 
-            this.Beta_Count_TB.Location = new System.Drawing.Point(383, 53);
+            this.Beta_Count_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Beta_Count_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Beta_Count_TB.Location = new System.Drawing.Point(383, 66);
             this.Beta_Count_TB.Name = "Beta_Count_TB";
-            this.Beta_Count_TB.Size = new System.Drawing.Size(131, 22);
+            this.Beta_Count_TB.Size = new System.Drawing.Size(131, 27);
             this.Beta_Count_TB.TabIndex = 32;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(947, 28);
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label23.Location = new System.Drawing.Point(943, 32);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(38, 16);
+            this.label23.Size = new System.Drawing.Size(45, 18);
             this.label23.TabIndex = 44;
             this.label23.Text = "DPM";
             // 
             // Alpha_GCPM_TB
             // 
-            this.Alpha_GCPM_TB.Location = new System.Drawing.Point(130, 27);
+            this.Alpha_GCPM_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Alpha_GCPM_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Alpha_GCPM_TB.Location = new System.Drawing.Point(131, 33);
             this.Alpha_GCPM_TB.Name = "Alpha_GCPM_TB";
-            this.Alpha_GCPM_TB.Size = new System.Drawing.Size(131, 22);
+            this.Alpha_GCPM_TB.Size = new System.Drawing.Size(131, 27);
             this.Alpha_GCPM_TB.TabIndex = 78;
             // 
             // Alpha_Activity_TB
             // 
-            this.Alpha_Activity_TB.Location = new System.Drawing.Point(810, 25);
+            this.Alpha_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Alpha_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Alpha_Activity_TB.Location = new System.Drawing.Point(809, 27);
             this.Alpha_Activity_TB.Name = "Alpha_Activity_TB";
-            this.Alpha_Activity_TB.Size = new System.Drawing.Size(131, 22);
+            this.Alpha_Activity_TB.Size = new System.Drawing.Size(131, 27);
             this.Alpha_Activity_TB.TabIndex = 43;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.MintCream;
-            this.label16.Location = new System.Drawing.Point(520, 31);
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label16.Location = new System.Drawing.Point(520, 38);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(61, 16);
+            this.label16.Size = new System.Drawing.Size(76, 18);
             this.label16.TabIndex = 31;
             this.label16.Text = "Net CPM";
             // 
             // Alpha_Count_TB
             // 
-            this.Alpha_Count_TB.Location = new System.Drawing.Point(383, 27);
+            this.Alpha_Count_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Alpha_Count_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Alpha_Count_TB.Location = new System.Drawing.Point(383, 32);
             this.Alpha_Count_TB.Name = "Alpha_Count_TB";
-            this.Alpha_Count_TB.Size = new System.Drawing.Size(131, 22);
+            this.Alpha_Count_TB.Size = new System.Drawing.Size(131, 27);
             this.Alpha_Count_TB.TabIndex = 30;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.MintCream;
-            this.label13.Location = new System.Drawing.Point(3, 56);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label13.Location = new System.Drawing.Point(6, 72);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 20);
+            this.label13.Size = new System.Drawing.Size(122, 18);
             this.label13.TabIndex = 27;
             this.label13.Text = "Beta at 1.645σ:";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.MintCream;
-            this.label26.Location = new System.Drawing.Point(626, 51);
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label26.Location = new System.Drawing.Point(624, 72);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(171, 20);
+            this.label26.Size = new System.Drawing.Size(180, 18);
             this.label26.TabIndex = 40;
             this.label26.Text = "Beta Activity at 1.645σ:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.MintCream;
-            this.label12.Location = new System.Drawing.Point(3, 32);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label12.Location = new System.Drawing.Point(3, 39);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(125, 20);
+            this.label12.Size = new System.Drawing.Size(129, 18);
             this.label12.TabIndex = 26;
             this.label12.Text = "Alpha at 1.645σ:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.MintCream;
-            this.label27.Location = new System.Drawing.Point(626, 23);
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label27.Location = new System.Drawing.Point(620, 33);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(178, 20);
+            this.label27.Size = new System.Drawing.Size(187, 18);
             this.label27.TabIndex = 39;
             this.label27.Text = "Alpha Activity at 1.645σ:";
             // 
@@ -476,7 +496,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.MintCream;
-            this.label10.Location = new System.Drawing.Point(315, 238);
+            this.label10.Location = new System.Drawing.Point(650, 238);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 20);
             this.label10.TabIndex = 132;
@@ -484,7 +504,7 @@
             // 
             // Beta_MDA_TB
             // 
-            this.Beta_MDA_TB.Location = new System.Drawing.Point(238, 238);
+            this.Beta_MDA_TB.Location = new System.Drawing.Point(573, 238);
             this.Beta_MDA_TB.Name = "Beta_MDA_TB";
             this.Beta_MDA_TB.Size = new System.Drawing.Size(69, 20);
             this.Beta_MDA_TB.TabIndex = 131;
@@ -494,7 +514,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.MintCream;
-            this.label9.Location = new System.Drawing.Point(315, 208);
+            this.label9.Location = new System.Drawing.Point(650, 208);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 20);
             this.label9.TabIndex = 130;
@@ -502,7 +522,7 @@
             // 
             // Alpha_MDA_TB
             // 
-            this.Alpha_MDA_TB.Location = new System.Drawing.Point(238, 208);
+            this.Alpha_MDA_TB.Location = new System.Drawing.Point(573, 208);
             this.Alpha_MDA_TB.Name = "Alpha_MDA_TB";
             this.Alpha_MDA_TB.Size = new System.Drawing.Size(69, 20);
             this.Alpha_MDA_TB.TabIndex = 129;
@@ -512,7 +532,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MintCream;
-            this.label8.Location = new System.Drawing.Point(143, 238);
+            this.label8.Location = new System.Drawing.Point(478, 238);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
             this.label8.TabIndex = 128;
@@ -523,7 +543,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.MintCream;
-            this.label7.Location = new System.Drawing.Point(143, 212);
+            this.label7.Location = new System.Drawing.Point(478, 212);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 20);
             this.label7.TabIndex = 127;
@@ -584,19 +604,17 @@
             this.groupBox5.ContextMenuStrip = this.cm_StripModFactors;
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Controls.Add(this.Area_Mod_TB);
-            this.groupBox5.Controls.Add(this.Removal_Percentage_Mod_TB);
             this.groupBox5.Controls.Add(this.Beta_Backscatter_Mod_TB);
             this.groupBox5.Controls.Add(this.Beta_Absorption_Mod_TB);
             this.groupBox5.Controls.Add(this.Alpha_Absorption_Mod_TB);
             this.groupBox5.Controls.Add(this.label33);
             this.groupBox5.Controls.Add(this.label32);
             this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.label30);
             this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(740, 19);
+            this.groupBox5.Location = new System.Drawing.Point(755, 33);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(303, 177);
+            this.groupBox5.Size = new System.Drawing.Size(329, 155);
             this.groupBox5.TabIndex = 121;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Select Modification Factors";
@@ -626,7 +644,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(115, 143);
+            this.label35.Location = new System.Drawing.Point(145, 119);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(82, 16);
             this.label35.TabIndex = 75;
@@ -634,25 +652,16 @@
             // 
             // Area_Mod_TB
             // 
-            this.Area_Mod_TB.Location = new System.Drawing.Point(227, 140);
+            this.Area_Mod_TB.Location = new System.Drawing.Point(245, 116);
             this.Area_Mod_TB.Name = "Area_Mod_TB";
             this.Area_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Area_Mod_TB.TabIndex = 73;
             this.Area_Mod_TB.Text = "100";
             this.Area_Mod_TB.LostFocus += new System.EventHandler(this.Area_Mod_TB_LostFocus);
             // 
-            // Removal_Percentage_Mod_TB
-            // 
-            this.Removal_Percentage_Mod_TB.Location = new System.Drawing.Point(227, 114);
-            this.Removal_Percentage_Mod_TB.Name = "Removal_Percentage_Mod_TB";
-            this.Removal_Percentage_Mod_TB.Size = new System.Drawing.Size(61, 22);
-            this.Removal_Percentage_Mod_TB.TabIndex = 72;
-            this.Removal_Percentage_Mod_TB.Text = "30";
-            this.Removal_Percentage_Mod_TB.LostFocus += new System.EventHandler(this.Removal_Percentage_Mod_TB_LostFocus);
-            // 
             // Beta_Backscatter_Mod_TB
             // 
-            this.Beta_Backscatter_Mod_TB.Location = new System.Drawing.Point(227, 88);
+            this.Beta_Backscatter_Mod_TB.Location = new System.Drawing.Point(245, 88);
             this.Beta_Backscatter_Mod_TB.Name = "Beta_Backscatter_Mod_TB";
             this.Beta_Backscatter_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Beta_Backscatter_Mod_TB.TabIndex = 71;
@@ -661,7 +670,7 @@
             // 
             // Beta_Absorption_Mod_TB
             // 
-            this.Beta_Absorption_Mod_TB.Location = new System.Drawing.Point(227, 62);
+            this.Beta_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 62);
             this.Beta_Absorption_Mod_TB.Name = "Beta_Absorption_Mod_TB";
             this.Beta_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Beta_Absorption_Mod_TB.TabIndex = 70;
@@ -670,7 +679,7 @@
             // 
             // Alpha_Absorption_Mod_TB
             // 
-            this.Alpha_Absorption_Mod_TB.Location = new System.Drawing.Point(227, 36);
+            this.Alpha_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 36);
             this.Alpha_Absorption_Mod_TB.Name = "Alpha_Absorption_Mod_TB";
             this.Alpha_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Alpha_Absorption_Mod_TB.TabIndex = 69;
@@ -680,7 +689,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(12, 143);
+            this.label33.Location = new System.Drawing.Point(12, 119);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(136, 16);
             this.label33.TabIndex = 68;
@@ -703,15 +712,6 @@
             this.label31.Size = new System.Drawing.Size(154, 16);
             this.label31.TabIndex = 66;
             this.label31.Text = "Beta Backscatter Factor:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(11, 117);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(214, 16);
-            this.label30.TabIndex = 65;
-            this.label30.Text = "Contaminant Removal Fraction(%):";
             // 
             // label29
             // 
@@ -776,7 +776,7 @@
             this.groupBox2.Controls.Add(this.Preset_Time_Label);
             this.groupBox2.Controls.Add(this.Elapsed_Time_Label);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(16, 56);
+            this.groupBox2.Location = new System.Drawing.Point(12, 50);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(430, 141);
             this.groupBox2.TabIndex = 117;
@@ -992,9 +992,9 @@
             this.FullDataResults.BackgroundColor = System.Drawing.SystemColors.Control;
             this.FullDataResults.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FullDataResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FullDataResults.Location = new System.Drawing.Point(12, 492);
+            this.FullDataResults.Location = new System.Drawing.Point(12, 514);
             this.FullDataResults.Name = "FullDataResults";
-            this.FullDataResults.Size = new System.Drawing.Size(1031, 304);
+            this.FullDataResults.Size = new System.Drawing.Size(1072, 304);
             this.FullDataResults.TabIndex = 141;
             this.FullDataResults.Visible = false;
             // 
@@ -1008,7 +1008,7 @@
             this.groupBox1.Controls.Add(this.Status_Label);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(455, 56);
+            this.groupBox1.Location = new System.Drawing.Point(448, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(279, 141);
             this.groupBox1.TabIndex = 142;
@@ -1022,15 +1022,15 @@
             this.groupBox6.Controls.Add(this._400_1200_Energy_Button);
             this.groupBox6.Controls.Add(this._1200_Energy_Button);
             this.groupBox6.Controls.Add(this._100_200_Energy_Button);
-            this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox6.Location = new System.Drawing.Point(740, 208);
+            this.groupBox6.Location = new System.Drawing.Point(755, 195);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(303, 63);
+            this.groupBox6.Size = new System.Drawing.Size(329, 63);
             this.groupBox6.TabIndex = 143;
             this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Beta Energy Level:";
             // 
             // _100_Energy_Button
             // 
@@ -1091,26 +1091,15 @@
             this._100_200_Energy_Button.Text = "100-200 KeV";
             this._100_200_Energy_Button.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, -3);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 15);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Beta Energy Level:";
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lbl_BackgroundType);
             this.groupBox7.Controls.Add(this.btn_SetBackgroundType);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox7.Location = new System.Drawing.Point(755, 366);
+            this.groupBox7.Location = new System.Drawing.Point(790, 391);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(288, 69);
+            this.groupBox7.Size = new System.Drawing.Size(294, 69);
             this.groupBox7.TabIndex = 144;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Background Type";
@@ -1132,7 +1121,7 @@
             this.btnSaveRSCresults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveRSCresults.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveRSCresults.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnSaveRSCresults.Location = new System.Drawing.Point(893, 449);
+            this.btnSaveRSCresults.Location = new System.Drawing.Point(934, 468);
             this.btnSaveRSCresults.Name = "btnSaveRSCresults";
             this.btnSaveRSCresults.Size = new System.Drawing.Size(150, 37);
             this.btnSaveRSCresults.TabIndex = 145;
@@ -1140,17 +1129,62 @@
             this.btnSaveRSCresults.UseVisualStyleBackColor = false;
             this.btnSaveRSCresults.Click += new System.EventHandler(this.btnSaveRSCresults_Click);
             // 
+            // lblb
+            // 
+            this.lblb.AutoSize = true;
+            this.lblb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblb.ForeColor = System.Drawing.Color.MintCream;
+            this.lblb.Location = new System.Drawing.Point(160, 237);
+            this.lblb.Name = "lblb";
+            this.lblb.Size = new System.Drawing.Size(124, 20);
+            this.lblb.TabIndex = 147;
+            this.lblb.Text = "Beta Efficiency=";
+            // 
+            // lbla
+            // 
+            this.lbla.AutoSize = true;
+            this.lbla.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbla.ForeColor = System.Drawing.Color.MintCream;
+            this.lbla.Location = new System.Drawing.Point(160, 211);
+            this.lbla.Name = "lbla";
+            this.lbla.Size = new System.Drawing.Size(131, 20);
+            this.lbla.TabIndex = 146;
+            this.lbla.Text = "Alpha Efficiency=";
+            // 
+            // lblBetaEff
+            // 
+            this.lblBetaEff.AutoSize = true;
+            this.lblBetaEff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBetaEff.ForeColor = System.Drawing.Color.MintCream;
+            this.lblBetaEff.Location = new System.Drawing.Point(290, 236);
+            this.lblBetaEff.Name = "lblBetaEff";
+            this.lblBetaEff.Size = new System.Drawing.Size(0, 20);
+            this.lblBetaEff.TabIndex = 149;
+            // 
+            // lblAlphaEff
+            // 
+            this.lblAlphaEff.AutoSize = true;
+            this.lblAlphaEff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlphaEff.ForeColor = System.Drawing.Color.MintCream;
+            this.lblAlphaEff.Location = new System.Drawing.Point(290, 212);
+            this.lblAlphaEff.Name = "lblAlphaEff";
+            this.lblAlphaEff.Size = new System.Drawing.Size(0, 20);
+            this.lblAlphaEff.TabIndex = 148;
+            // 
             // FormRSC
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1076, 782);
+            this.ClientSize = new System.Drawing.Size(1088, 826);
+            this.Controls.Add(this.lblBetaEff);
+            this.Controls.Add(this.lblAlphaEff);
+            this.Controls.Add(this.lblb);
+            this.Controls.Add(this.lbla);
             this.Controls.Add(this.btnSaveRSCresults);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.FullDataResults);
-            this.Controls.Add(this.label43);
             this.Controls.Add(this.Show_Full_Data_Checkbox);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1239,14 +1273,12 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox Area_Mod_TB;
-        private System.Windows.Forms.TextBox Removal_Percentage_Mod_TB;
         private System.Windows.Forms.TextBox Beta_Backscatter_Mod_TB;
         private System.Windows.Forms.TextBox Beta_Absorption_Mod_TB;
         private System.Windows.Forms.TextBox Alpha_Absorption_Mod_TB;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button PauseButton;
         private System.Windows.Forms.Button btn_SetBackgroundType;
@@ -1278,7 +1310,6 @@
         private System.Windows.Forms.RadioButton _400_1200_Energy_Button;
         private System.Windows.Forms.RadioButton _1200_Energy_Button;
         private System.Windows.Forms.RadioButton _100_200_Energy_Button;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton _100_Energy_Button;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label lbl_BackgroundType;
@@ -1286,5 +1317,9 @@
         private System.Windows.Forms.ToolStripMenuItem switchToDefaultValueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem switchToUserValueToolStripMenuItem;
         private System.Windows.Forms.Button btnSaveRSCresults;
+        private System.Windows.Forms.Label lblb;
+        private System.Windows.Forms.Label lbla;
+        private System.Windows.Forms.Label lblBetaEff;
+        private System.Windows.Forms.Label lblAlphaEff;
     }
 }

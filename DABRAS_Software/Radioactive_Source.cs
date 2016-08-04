@@ -43,6 +43,8 @@ namespace DABRAS_Software
         private int DailyCalibrationSeconds;
         private DateTime HiLoCalibrationDate;
         private DateTime AnnualCalibrationDate;
+
+        private string[,] Background_Data, Efficiency_Data;
         #endregion
 
         #region Constructor
@@ -53,6 +55,8 @@ namespace DABRAS_Software
             this.Description = _Description;
             this.CertificationDate = _CertDate;
             this.CertifiedActivity = _CertActivity;
+            this.Background_Data = null;
+            this.Efficiency_Data = null;
         }
         #endregion
 
@@ -239,7 +243,14 @@ namespace DABRAS_Software
         {
              return this.AnnualCalibrationSeconds;
         }
-
+        public string[,] GetBackgroundData()
+        {
+            return this.Background_Data;
+        }
+        public string[,] GetEfficiencyData()
+        {
+            return this.Efficiency_Data;
+        }
         #endregion
 
         #region Custom Setters
@@ -260,7 +271,7 @@ namespace DABRAS_Software
             this.Beta_Energy = _E;
             return true;
         }
-        public bool SetAlphaDisintigrationConstant(double _Value)
+        public bool SetAlphaDisintigrationFactor(double _Value)
         {
             this.AlphaDisintigrationFactor = _Value;
             return true;
@@ -381,21 +392,30 @@ namespace DABRAS_Software
         public bool SetAnnualCalibratedDate(DateTime _D)
         {
             this.AnnualCalibrationDate = _D;
+            if (DateTime.Compare(this.DailyCalibrationDate, _D) < 0)
+                this.SetDailyCalibratedDate(_D);
             return true;
         }
-
         public bool SetDailyCalibratedTimespan(int _T)
         {
             this.DailyCalibrationSeconds = _T;
             return true;
         }
-
         public bool SetAnnualCalibratedTimespan(int _T)
         {
             this.AnnualCalibrationSeconds = _T;
             return true;
         }
-
+        public bool SetBackgroundData(string[,] _Val)
+        {
+            this.Background_Data = _Val;
+            return true;
+        }
+        public bool SetEfficiencyData(string[,]_Val)
+        {
+            this.Efficiency_Data = _Val;
+            return true;
+        }
         #endregion
     }
 }

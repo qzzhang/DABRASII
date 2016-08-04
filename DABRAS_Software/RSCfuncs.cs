@@ -106,8 +106,8 @@ namespace DABRAS_Software
             this.Alpha_MDA_TB.Text = Convert.ToString(FullDataResults[1, 15].Value);
             this.Beta_MDA_TB.Text = Convert.ToString(FullDataResults[1, 16].Value);
 
-            this.Alpha_Count_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 7].Value, FullDataResults[1, 19].Value);
-            this.Beta_Count_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 8].Value, FullDataResults[1, 20].Value);
+            this.Alpha_Count_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 17].Value, FullDataResults[1, 19].Value);
+            this.Beta_Count_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 18].Value, FullDataResults[1, 20].Value);
 
             this.LC_Alpha_TB.Text = String.Format("{0:G3}", FullDataResults[1, 13].Value);
             this.LC_Beta_TB.Text = String.Format("{0:G3}", FullDataResults[1, 14].Value);
@@ -115,8 +115,8 @@ namespace DABRAS_Software
             this.Alpha_GCPM_TB.Text = String.Format("{0:G3}", FullDataResults[1, 7].Value);
             this.Beta_GCPM_TB.Text = String.Format("{0:G3}", FullDataResults[1, 8].Value);
 
-            this.Alpha_Activity_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 34].Value, FullDataResults[1, 32].Value);
-            this.Beta_Activity_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 35].Value, FullDataResults[1, 33].Value);
+            this.Alpha_Activity_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 33].Value, FullDataResults[1, 32].Value);
+            this.Beta_Activity_TB.Text = String.Format("{0:G3}±{1:G3}", FullDataResults[1, 34].Value, FullDataResults[1, 33].Value);
 
             //For calibration
             this.AlphaGCPM = Convert.ToDouble(FullDataResults[1, 7].Value);
@@ -138,9 +138,6 @@ namespace DABRAS_Software
 
             this.Beta_Backscatter = mf.GetBetaBackscatter();
             this.Beta_Backscatter_Mod_TB.Text = Convert.ToString(this.Beta_Backscatter);
-
-            this.Contaminant_Removal_Fraction = mf.GetRemovalFrac();
-            this.Removal_Percentage_Mod_TB.Text = Convert.ToString(this.Contaminant_Removal_Fraction);
 
             this.Sample_Area = mf.GetDefaultSampleArea();
             this.Area_Mod_TB.Text = Convert.ToString(Sample_Area);
@@ -184,12 +181,18 @@ namespace DABRAS_Software
             {
                 if (rf.GetSourceType() == RadionuclideFamily.RadiationType.Alpha)
                 {
-                    Alpha_ComboBox.Items.Add(rf.GetName());
-                }
+                    Radioactive_Source rs = rf.GetCurrentSource();
+                    TimeSpan T = DateTime.Now.Subtract(rs.GetAnnualCalibratedTime());
+                    if (TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0)) < 0)
+                        Alpha_ComboBox.Items.Add(rf.GetName());
 
+                }
                 if (rf.GetSourceType() == RadionuclideFamily.RadiationType.Beta)
                 {
-                    Beta_ComboBox.Items.Add(rf.GetName());
+                    Radioactive_Source rs = rf.GetCurrentSource();
+                    TimeSpan T = DateTime.Now.Subtract(rs.GetAnnualCalibratedTime());
+                    if (TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0)) < 0 && rs.GetFamilyID() == rf.GetFamilyID())
+                        Beta_ComboBox.Items.Add(rf.GetName());
                 }
             }
 
@@ -217,11 +220,12 @@ namespace DABRAS_Software
 
         private void initDataResults()//DataGridView Initialization
         {
+            this.FullDataResults.Columns.Clear();
             FullDataResults.Columns.Add("Headers", "");
             DataGridViewColumn Headers = FullDataResults.Columns[0];
             Headers.Width = 175;
 
-            //33 rows, indexed 0-32 in groups of 10
+            //32 rows, indexed 0-31 in groups of 10
             FullDataResults.Rows.Add("Id Number");
             FullDataResults.Rows.Add("Detailed Description");
             FullDataResults.Rows.Add("Start Date/Time");
@@ -235,12 +239,10 @@ namespace DABRAS_Software
             if (this.UsingAnnual())
             {
                 FullDataResults.Rows.Add("Annual Background Reference Date/Time");
-
                 FullDataResults.Rows.Add("Annual Background Sample Time");
                 FullDataResults.Rows.Add("Annual Background Alpha");
                 FullDataResults.Rows.Add("Annual Background Beta");
             }
-
             else
             {
                 FullDataResults.Rows.Add("Daily Background Reference Date/Time");
@@ -255,8 +257,8 @@ namespace DABRAS_Software
             FullDataResults.Rows.Add("Net Alpha CPM");
             FullDataResults.Rows.Add("Net Beta CPM");
             FullDataResults.Rows.Add("Alpha Uncertainty (CPM)");
-
             FullDataResults.Rows.Add("Beta Uncertainty (CPM)");
+
             FullDataResults.Rows.Add("Alpha 4pi Efficiency (%)");
             FullDataResults.Rows.Add("Beta 4pi Efficiency (%)");
             FullDataResults.Rows.Add(String.Format("Alpha Efficiency for {0}", Alpha_ComboBox.Text));
@@ -264,7 +266,6 @@ namespace DABRAS_Software
             FullDataResults.Rows.Add("Alpha Mod factor");
             FullDataResults.Rows.Add("Beta Mod factor");
             FullDataResults.Rows.Add("Beta Backscatter Factor");
-            FullDataResults.Rows.Add("Contaminant Removal Fraction");
             FullDataResults.Rows.Add("Sample Area (square cm)");
 
             FullDataResults.Rows.Add("Alpha Limit (DPM)");
@@ -279,6 +280,7 @@ namespace DABRAS_Software
             {
                 FullDataResults[0, i].ReadOnly = true;
             }
+            this.FullDataResults.Visible = Show_Full_Data_Checkbox.Checked;
         }
 
         private void initRSCgridByFile()
@@ -514,6 +516,7 @@ namespace DABRAS_Software
             this.New_Count_Button.Enabled = !Running;
             this.Continue_Count_Button.Enabled = !Running;
             this.btn_SetBackgroundType.Enabled = !Running;
+            this.btnSaveRSCresults.Enabled = !Running;
             this.Min_TB.Enabled = !Running;
             this.Sec_TB.Enabled = !Running;
             this.AlphaMDALimit_TB.Enabled = !Running;
@@ -545,12 +548,16 @@ namespace DABRAS_Software
                 int smpNo = Convert.ToInt32(this.Sample_ID_TB.Text);
 
                 string CustomFilePath = String.Format("{0}\\data\\Routine\\{1}\\{2}_{3}_{4}_{5}_{6}_RSC.csv", Environment.CurrentDirectory, smpNo, yr, mn, dy, desc, this.GetDABRAS().Serial_Number);
-                //string MasterPath = String.Format("{0}\\data\\Routine\\Master\\Master.csv", Environment.CurrentDirectory);
-                string MasterPath = String.Format("{0}\\data\\Routine\\Monthly\\Month_{1}.csv", Environment.CurrentDirectory, mn);
+                string MasterPath = String.Format("{0}\\data\\Routine\\Master\\Master.csv", Environment.CurrentDirectory);
+                string MasterDir = String.Format("{0}\\data\\Routine\\Master", Environment.CurrentDirectory);
                 string CustomDir = String.Format("{0}\\data\\Routine\\{1}", Environment.CurrentDirectory, smpNo);
                 string[,] DataToWrite = this.frmParent.MakeDataWritable(this.FullDataResults);
                 try
                 {
+                    if (!Directory.Exists(MasterDir))
+                    {
+                        Directory.CreateDirectory(MasterDir);
+                    }
                     if (!Directory.Exists(CustomDir))
                     {
                         Directory.CreateDirectory(CustomDir);
@@ -662,8 +669,8 @@ namespace DABRAS_Software
         private bool WasBackgroundFinishedSuccessfully;
         private DateTime BackgroundFinished;
 
-        private int AlphaBackground;
-        private int BetaBackground;
+        private double AlphaBackground;
+        private double BetaBackground;
         private int BackgroundCountTime;
         private int ElapsedTime = 0;
 
@@ -677,7 +684,6 @@ namespace DABRAS_Software
         private double AlphaSelfAbsorbtion = 0;
         private double BetaSelfAbsorbtion = 0;
         private double BetaBackscatter = 0;
-        private double RemovalPercentage = 1; //from 0 to 1
         private double AreaOfSample = 100; //square cm
 
         private FormRSC.RoutineSampleCountType Type;
@@ -693,12 +699,12 @@ namespace DABRAS_Software
         #endregion
 
         #region Constructor
-        public RoutineSampleListener(DABRAS _DABRAS, int _SampleTime, double _MDAStopValue, DataGridView _FullTable, int _AlphaBG, int _BetaBG, double _AlphaE, double _BetaE, double _AlphaAbsorbtion, double _BetaAbsorbtion, double _BetaBackscatter, double _RemovalPercentage, double _Area, int _BGCountTime, FormRSC.RoutineSampleCountType _Type, double _AlphaMDA, double _BetaMDA)
+        public RoutineSampleListener(DABRAS _DABRAS, int _SampleTime, double _MDAStopValue, DataGridView _FullTable, double _AlphaBG, double _BetaBG, double _AlphaE, double _BetaE, double _AlphaAbsorbtion, double _BetaAbsorbtion, double _BetaBackscatter, double _Area, int _BGCountTime, FormRSC.RoutineSampleCountType _Type, double _AlphaMDA, double _BetaMDA)
         {
             this.DABRAS = _DABRAS;
             this.FullResults_Table = _FullTable;
             this.SampleTime = _SampleTime;
-            WasBackgroundFinishedSuccessfully = false;
+            this.WasBackgroundFinishedSuccessfully = false;
 
             this.AlphaBackground = _AlphaBG;
             this.BetaBackground = _BetaBG;
@@ -711,8 +717,6 @@ namespace DABRAS_Software
             this.BetaSelfAbsorbtion = _BetaAbsorbtion;
 
             this.BetaBackscatter = _BetaBackscatter;
-
-            this.RemovalPercentage = _RemovalPercentage;
             this.AreaOfSample = _Area;
 
             this.Type = _Type;
@@ -760,12 +764,12 @@ namespace DABRAS_Software
             return this.ElapsedTime;
         }
 
-        public int GetAlphaBackground()
+        public double GetAlphaBackground()
         {
             return this.AlphaBackground;
         }
 
-        public int GetBetaBackground()
+        public double GetBetaBackground()
         {
             return this.BetaBackground;
         }
@@ -953,10 +957,10 @@ namespace DABRAS_Software
                     DataGridViewCell NetAlphaUncertaintyCell = FullResults_Table[1, 19];
                     DataGridViewCell NetBetaUncertaintyCell = FullResults_Table[1, 20];
 
-                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 34];
-                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 32];
-                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 35];
-                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 33];
+                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 33];
+                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 31];
+                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 34];
+                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 32];
 
                     //Parse data to form
                     this.ElapsedTime = IncomingData.ElTime;

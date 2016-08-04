@@ -121,7 +121,7 @@ namespace DABRAS_Software
         }
         public Radioactive_Source GetCurrentSource()
         {
-            return this.current_source ;
+            return this.current_source;
         }
 
         public double GetAlphaHi()

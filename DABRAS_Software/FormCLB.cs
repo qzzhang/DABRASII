@@ -194,6 +194,7 @@ namespace DABRAS_Software
                     this.Stop_Count_Button.Text = "Stop Efficiency Scanning";
 
                     this.SetGUI(true);
+                    this.enableTabButtons(false);
                 }
             }
         }
@@ -273,6 +274,7 @@ namespace DABRAS_Software
 
             this.Stop_Count_Button.Text = "Stop Background Counting";
             this.SetGUI(true);
+            this.enableTabButtons(false);
         }
         #endregion
 
@@ -406,6 +408,7 @@ namespace DABRAS_Software
             this.endFormActivities();
             this.Stop_Count_Button.Text = "Stop Counting";
             this.SetGUI(false);
+            this.enableTabButtons(true);
         }
         #endregion
 

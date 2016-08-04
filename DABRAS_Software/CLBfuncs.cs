@@ -29,6 +29,7 @@ namespace DABRAS_Software
             {
                 this.frmParent.refreshConnectStatus();
                 this.endFormActivities();
+                this.enableTabButtons(true);
                 return;
             }
 
@@ -102,6 +103,28 @@ namespace DABRAS_Software
                 }
 
                 BackgroundSource.SetAnnualCalibratedDate(BL.GetDateTimeCompleted());
+
+                //The following block of code is simply used to set the calibration time span.
+                int SampleTime = 0;
+                int NumSamples = 0;
+                int timeSpanSeconds = 0;
+                try
+                {
+                    SampleTime = (Convert.ToInt32(Min_BG_TB.Text) * 60) + Convert.ToInt32(Sec_BG_TB.Text);
+                    NumSamples = Convert.ToInt32(this.BG_NumCounts_TB.Text);
+                    if (NumSamples <= 0 || SampleTime <= 0)
+                    {
+                        MessageBox.Show("Please enter positive numbers for samples and sampling time.");
+                        return;
+                    }
+                    timeSpanSeconds = NumSamples * SampleTime;
+                    BackgroundSource.SetAnnualCalibratedTimespan(timeSpanSeconds);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Invalid Parameters. Enter numerial values only.");
+                    return;
+                }
 
                 //update the configuration file
                 this.updFamilyAndSource(this.ListOfValidFamily, this.ListOfValidSources);
@@ -256,7 +279,6 @@ namespace DABRAS_Software
                         this._400_1200_Energy_Button.Checked = false;
                         this._1200_Energy_Button.Checked = false;
                         return;
-
                 }
             }
         }
@@ -399,6 +421,12 @@ namespace DABRAS_Software
             this.SaveEfficiencyDataButton.Enabled = bval;
             this.ImageSaveButton.Enabled = bval;
         }
+        private void enableTabButtons(bool val)
+        {
+            this.btnHighVoltage.Enabled = val;
+            this.btnEstablishHiLoLimits.Enabled = val;
+            this.btnManageSources.Enabled = val;
+        }
         private void SetGUI(bool testRunning)
         {
             this.Determine_BG_Button.Enabled = !testRunning;
@@ -406,6 +434,7 @@ namespace DABRAS_Software
 
             this.SaveBackgroundCalibrationButton.Enabled = !testRunning;
             this.SaveEfficiencyDataButton.Enabled = !testRunning;
+            this.btnSetHVCtrl.Enabled = !testRunning;
             this.ImageSaveButton.Enabled = !testRunning;
 
             this.Stop_Count_Button.Enabled = testRunning;
@@ -748,7 +777,7 @@ namespace DABRAS_Software
                     break;
                 }
 
-                if (IncomingData != null && IncomingData.ElTime > 5)
+                if (IncomingData != null && IncomingData.ElTime > 3)
                 {
                     this.DABRAS.Write_To_Serial_Port("t");
                     Thread.Sleep(250);
@@ -847,12 +876,12 @@ namespace DABRAS_Software
                 AverageAlphaCell.Value = StaticMethods.RoundToDecimal(AverageAlphaCPM, 2);
                 AverageBetaCell.Value = StaticMethods.RoundToDecimal(AverageBetaCPM, 2);
 
-                this.AlphaCPM = AverageAlphaCPM; //Convert.ToInt32(AverageAlphaCPM);
+                this.AlphaCPM = AverageAlphaCPM;
                 this.BetaCPM = AverageBetaCPM;
 
                 //Compute Standard Deviations
-                double StdDevAlpha = 0;
-                double StdDevBeta = 0;
+                double StdDevAlpha = 0.0;
+                double StdDevBeta = 0.0;
 
                 for (int i = 0; i < NumSamples; i++)
                 {
@@ -864,10 +893,19 @@ namespace DABRAS_Software
                 {
                     StdDevAlpha /= (double)(NumSamples - 1);
                     StdDevBeta /= (double)(NumSamples - 1);
+                    StdDevAlpha = Math.Sqrt(StdDevAlpha);
+                    StdDevBeta = Math.Sqrt(StdDevBeta);
+                    StdDevAlphaCell.Value = StaticMethods.RoundToDecimal(StdDevAlpha, 2);
+                    StdDevBetaCell.Value = StaticMethods.RoundToDecimal(StdDevBeta, 2);
+                }
+                else if (NumSamples == 1)
+                {
+                    StdDevAlpha = 0.0;
+                    StdDevBeta = 0.0;
+                    StdDevAlphaCell.Value = Convert.ToString(StdDevAlpha);
+                    StdDevBetaCell.Value = Convert.ToString(StdDevBeta);
                 }
 
-                StdDevAlpha = Math.Sqrt(StdDevAlpha);
-                StdDevBeta = Math.Sqrt(StdDevBeta);
                 /*
                 //Sub in Poisson Statistics if necessary
                 if (AverageAlphaCPM < 20)
@@ -880,9 +918,7 @@ namespace DABRAS_Software
                     StdDevBeta = Math.Sqrt(Math.Abs(AverageBetaCPM));
                 }
                 */
-                StdDevAlphaCell.Value = StaticMethods.RoundToDecimal(StdDevAlpha, 2);
-                StdDevBetaCell.Value = StaticMethods.RoundToDecimal(StdDevBeta, 2);
-
+                
                 this.BG.SetAnnualCalibratedTimespan(this.NumSamples * this.SampleTime);
 
                 //Compute decay factor for the daily QC chart, as per MARLAP
@@ -1289,11 +1325,19 @@ namespace DABRAS_Software
                     StdDevBeta /= (double)(NumSamples - 1);
                     StdDevAlpha = Math.Sqrt(StdDevAlpha);
                     StdDevBeta = Math.Sqrt(StdDevBeta);
+                    if (this.radioType == "Alpha")
+                        StdDevAlphaCell.Value = StaticMethods.RoundToDecimal(StdDevAlpha, 2);
+                    if (this.radioType == "Beta")
+                        StdDevBetaCell.Value = StaticMethods.RoundToDecimal(StdDevBeta, 2);
                 }
-                else
+                else if (NumSamples == 1)
                 {
-                    StdDevAlpha = Math.Sqrt(AverageAlphaNCPM);
-                    StdDevBeta = Math.Sqrt(AverageBetaNCPM);
+                    StdDevAlpha = 0.0;
+                    StdDevBeta = 0.0;
+                    if (this.radioType == "Alpha")
+                        StdDevAlphaCell.Value = Convert.ToString(StdDevAlpha);
+                    if (this.radioType == "Beta")
+                        StdDevBetaCell.Value = Convert.ToString(StdDevBeta);
                 }
                 /*
                 //Sub in Poisson Statistics if necessary
@@ -1307,11 +1351,7 @@ namespace DABRAS_Software
                     StdDevBeta = Math.Sqrt(Math.Abs(AverageBetaNCPM));
                 }
                 */
-                if (this.radioType == "Alpha")
-                    StdDevAlphaCell.Value = StaticMethods.RoundToDecimal(StdDevAlpha, 2);
-                if (this.radioType == "Beta")
-                    StdDevBetaCell.Value = StaticMethods.RoundToDecimal(StdDevBeta, 2);
-
+                
                 //Compute Decay Value
                 if (this.radioType == "Alpha")
                     this.AlphaDFactor = this.R.ComputeDecayFactor(ListOfAlphaNCPM, this.SampleTime);

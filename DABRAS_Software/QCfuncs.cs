@@ -47,17 +47,11 @@ namespace DABRAS_Software
                 //Add QC object to List
                 QCCalResultNode NewResult = new QCCalResultNode(DateTime.Now, TypeOfQC.Background, 0,0,QCBG.GetBadgeNo(), true, Comment, QCBG.GetName(), QCBG.GetSampleTime());
                 QC_List.Add(NewResult);
-                
-                R.SetDailyCalibratedTimespan(QCBG.GetSampleTime() * QCBG.GetNumSamples());
 
                 this.DCModified = true;
                 this.SourcesModified = true;
                 this.updFamilyAndSource(this.ListOfFamily, this.ListOfSources);
                 this.frmParent.updFamilyAndSource(this.ListOfFamily, this.ListOfSources);
-
-                //Write results to a file
-                this.autoWriteBG2Files();
-                this.writeQCdata();
 
                 this.setCheckButtons();
 
@@ -70,6 +64,10 @@ namespace DABRAS_Software
                 this.bgPassed = false;
                 this.frmParent.EnableRSCForm(false);
             }
+            //Write results to a file
+            this.autoWriteBG2Files();
+
+            this.writeQCdata();
 
             this.OperationThread_QCBG = null;
             this.resetTabButtons();
@@ -110,7 +108,6 @@ namespace DABRAS_Software
                     RF.SetDailyAlphaCPM(Convert.ToInt32(QCAB.GetAlphaNCPM()));
                     RF.SetDailyBetaCPM(Convert.ToInt32(QCAB.GetBetaNCPM()));
                     RF.SetDailyCalibratedDate(DateTime.Now);
-                    RF.SetDailyCalibratedTimespan(QCAB.GetNumSamples() * QCAB.GetSampleTime());
 
                     //Add QC object to List
                     QCCalResultNode NewResult = new QCCalResultNode(DateTime.Now, TypeOfQC.Alpha, QCAB.GetAlphaNCPM(), QCAB.GetBetaNCPM(), QCAB.GetBadgeNo(), true, "Passed", QCAB.GetName(), QCAB.GetSampleTime());
@@ -311,6 +308,7 @@ namespace DABRAS_Software
         private IDictionary<string, string> WriteQCSummary()
         {
             IDictionary<string, string> QCsmry = new Dictionary<string, string>();
+            
             if (this.bkgrdData != null)
             {
                 int bgRows = this.bkgrdData.GetLength(0);
@@ -331,7 +329,7 @@ namespace DABRAS_Software
                 QCsmry["Net alpha Source Response"] = this.eff_Data_alpha[aRows - 2, 3];
                 QCsmry["Pass/Fail Alpha"] = this.eff_Data_alpha[aRows - 2, 6];
             }
-            if (this.eff_Data_alpha != null)
+            if (this.eff_Data_beta != null)
             {
                 QCsmry["Beta UL"] = Convert.ToString(this.BetaHi);
                 QCsmry["Beta LL"] = Convert.ToString(this.BetaLo);
@@ -472,7 +470,7 @@ namespace DABRAS_Software
         public void updFamilyAndSource(List<RadionuclideFamily> famList, List<Radioactive_Source> srcList)
         {
             this.ListOfSources = srcList;
-
+            /*
             //and update the family's current_efficiency with the efficiency of the source which has the most cureent calibration date.
             DateTime dt = new DateTime(2006, 8, 1, 0, 0, 0);
             Radioactive_Source curr_src = null;
@@ -492,7 +490,7 @@ namespace DABRAS_Software
                 if (curr_src != null)
                     rf.SetCurrentSource(curr_src);
             }
-
+            */
             this.ListOfFamily = famList;
         }
         #endregion
@@ -686,17 +684,18 @@ namespace DABRAS_Software
 
                 StdDevGAlpha = Math.Sqrt(StdDevGAlpha);
                 StdDevGBeta = Math.Sqrt(StdDevGBeta);
+                StdDevAlphaGCell.Value = StaticMethods.RoundToDecimal(StdDevGAlpha, 2);
+                StdDevBetaGCell.Value = StaticMethods.RoundToDecimal(StdDevGBeta, 2);
             }
-            else
+            else if (NumSamples == 1)
             {
-                StdDevGAlpha = Math.Sqrt(StdDevGAlpha);
-                StdDevNAlpha = Math.Sqrt(StdDevNAlpha);
-                StdDevGBeta = Math.Sqrt(StdDevGBeta);
-                StdDevNBeta = Math.Sqrt(StdDevNBeta);
+                StdDevGAlpha = 0.0;
+                StdDevNAlpha = 0.0;
+                StdDevGBeta = 0.0;
+                StdDevNBeta = 0.0;
+                StdDevAlphaGCell.Value = Convert.ToString(StdDevGAlpha);
+                StdDevBetaGCell.Value = Convert.ToString(StdDevGBeta);
             }
-
-            StdDevAlphaGCell.Value = StaticMethods.RoundToDecimal(StdDevGAlpha, 2);
-            StdDevBetaGCell.Value = StaticMethods.RoundToDecimal(StdDevGBeta, 2);
 
             //Display overall pass/fail--Test fails if any one of the tests fails.
             bool lessAlphaLo = !(this.AlphaGCPM >= AlphaLo);

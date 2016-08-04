@@ -43,9 +43,64 @@ namespace DABRAS_Software
             FullDataSet.Columns.Add("FullDataSet_BUL", "Beta UL");
             FullDataSet.Columns.Add("FullDataSet_PassFail", "Beta Pass/Fail");
 
-            FullDataSet.Rows.Add(String.Format("{0:MM/dd/yyyy}", DateTime.Now), String.Format("{0}:{1}", acqTime / 60, acqTime % 60), this.sumData["Bkg Rate (alpha)"], this.sumData["Bkg Rate (beta)"],  this.sumData["Background Pass/Fail"],
-                this.sumData["Gross alpha Source Response"], this.sumData["Net alpha Source Response"], this.sumData["Alpha LL"], this.sumData["Alpha UL"], this.sumData["Pass/Fail Alpha"], this.sumData["Gross beta Source Response"],
-                this.sumData["Net beta Source Response"], this.sumData["Beta LL"], this.sumData["Beta UL"], this.sumData["Pass/Fail Beta"]);
+            string bkgRate_a, bkgRate_b, bkgPass_Fail, aSrc_g, aSrc_n, aLL, aUL, alphaPass_Fail, bSrc_g, bSrc_n, bLL, bUL, betaPass_Fail;
+            if (this.sumData.ContainsKey("Bkg Rate (alpha)"))
+                bkgRate_a = this.sumData["Bkg Rate (alpha)"];
+            else
+                bkgRate_a = "";
+            if (this.sumData.ContainsKey("Bkg Rate (beta)"))
+                bkgRate_b = this.sumData["Bkg Rate (beta)"];
+            else
+                bkgRate_b = "";
+            if (this.sumData.ContainsKey("Background Pass/Fail"))
+                bkgPass_Fail = this.sumData["Background Pass/Fail"];
+            else
+                bkgPass_Fail = "";
+
+            if (this.sumData.ContainsKey("Gross alpha Source Response"))
+                aSrc_g = this.sumData["Gross alpha Source Response"];
+            else
+                aSrc_g = "";
+            if (this.sumData.ContainsKey("Net alpha Source Response"))
+                aSrc_n = this.sumData["Net alpha Source Response"];
+            else
+                aSrc_n = "";
+            if (this.sumData.ContainsKey("Alpha LL"))
+                aLL = this.sumData["Alpha LL"];
+            else
+                aLL = "";
+            if (this.sumData.ContainsKey("Alpha UL"))
+                aUL = this.sumData["Alpha UL"];
+            else
+                aUL= "";
+            if (this.sumData.ContainsKey("Pass/Fail Alpha"))
+                alphaPass_Fail = this.sumData["Pass/Fail Alpha"];
+            else
+                alphaPass_Fail = "";
+
+            if (this.sumData.ContainsKey("Gross beta Source Response"))
+                bSrc_g = this.sumData["Gross beta Source Response"];
+            else
+                bSrc_g = "";
+            if (this.sumData.ContainsKey("Net beta Source Response"))
+                bSrc_n = this.sumData["Net beta Source Response"];
+            else
+                bSrc_n = "";
+            if (this.sumData.ContainsKey("Beta LL"))
+                bLL = this.sumData["Beta LL"];
+            else
+                bLL = "";
+            if (this.sumData.ContainsKey("Beta UL"))
+                bUL = this.sumData["Beta UL"];
+            else
+                bUL = "";
+            if (this.sumData.ContainsKey("Pass/Fail Beta"))
+                betaPass_Fail = this.sumData["Pass/Fail Beta"];
+            else
+                betaPass_Fail = "";
+
+            FullDataSet.Rows.Add(String.Format("{0:MM/dd/yyyy}", DateTime.Now), String.Format("{0}:{1}", acqTime / 60, acqTime % 60), 
+                bkgRate_a, bkgRate_b, bkgPass_Fail, aSrc_g, aSrc_n, aLL, aUL, alphaPass_Fail, bSrc_g, bSrc_n, bLL, bUL, betaPass_Fail);
         }
         #endregion
 

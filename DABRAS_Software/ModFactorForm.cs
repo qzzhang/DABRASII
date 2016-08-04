@@ -25,7 +25,6 @@ namespace DABRAS_Software
                 this.Alpha_Absorption_Mod_TB.Text = Convert.ToString(_MF.GetAlphaSelfAbsorbtion());
                 this.Beta_Absorption_Mod_TB.Text = Convert.ToString(_MF.GetBetaSelfAbsorbtion());
                 this.Beta_Backscatter_Mod_TB.Text = Convert.ToString(_MF.GetBetaBackscatter());
-                this.Removal_Percentage_Mod_TB.Text = Convert.ToString(_MF.GetRemovalFrac());
                 this.Area_Mod_TB.Text = Convert.ToString(_MF.GetDefaultSampleArea());
             }
 
@@ -39,7 +38,7 @@ namespace DABRAS_Software
         {
             try
             {
-                MF = new ModFactors(Convert.ToDouble(this.Alpha_Absorption_Mod_TB.Text), Convert.ToDouble(this.Beta_Absorption_Mod_TB.Text), Convert.ToDouble(this.Beta_Backscatter_Mod_TB.Text), Convert.ToDouble(this.Removal_Percentage_Mod_TB.Text), Convert.ToDouble(this.Area_Mod_TB.Text));
+                MF = new ModFactors(Convert.ToDouble(this.Alpha_Absorption_Mod_TB.Text), Convert.ToDouble(this.Beta_Absorption_Mod_TB.Text), Convert.ToDouble(this.Beta_Backscatter_Mod_TB.Text), Convert.ToDouble(this.Area_Mod_TB.Text));
                 this.DialogResult = DialogResult.OK;
                 return;
             }

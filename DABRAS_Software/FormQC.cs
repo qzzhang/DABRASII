@@ -552,8 +552,14 @@ namespace DABRAS_Software
         #region Show Full Data Set Handler
         private void ShowFullDataSetButton_Click(object sender, EventArgs e)
         {
-            FullDataSetPopup NewForm = new FullDataSetPopup( this.frmParent.GetLogger(), this.WriteQCSummary(), this.Sampletime);
-            NewForm.ShowDialog();
+            IDictionary<string, string> QCscanData = this.WriteQCSummary();
+            if (QCscanData.Count > 0)
+            {
+                FullDataSetPopup NewForm = new FullDataSetPopup(this.frmParent.GetLogger(), QCscanData, this.Sampletime);
+                NewForm.ShowDialog();
+            }
+            else
+                MessageBox.Show("No QC Test data to show yet.");
         }
         #endregion
 
@@ -902,7 +908,7 @@ namespace DABRAS_Software
                 using (FileStream F = new FileStream(sumMonthlyFile, FileMode.Append))
                 {
                     if(this.frmParent.GetLogger().WriteSummaryData(F, this.WriteMetaData(this.Name_TB.Text), this.WriteQCSummary(), false))
-                        MessageBox.Show("Summary data written.");
+                        MessageBox.Show("Summary data has been written to " + sumMonthlyFile + ".");
                 }
             }
             catch (Exception wex)

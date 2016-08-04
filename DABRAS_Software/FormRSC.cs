@@ -31,7 +31,6 @@ namespace DABRAS_Software
         private double Alpha_SelfAbsorbtion = 0;
         private double Beta_SelfAbsorbtion = 0;
         private double Beta_Backscatter = 0;
-        private double Contaminant_Removal_Fraction = 0; //Between 0 and 1
         private double Sample_Area = 0;
         private double AlphaMDA = 0;
         private double BetaMDA = 0;
@@ -88,8 +87,10 @@ namespace DABRAS_Software
             RadionuclideFamily BetaSource = this.frmParent.GetListOfFamily().Find(x => x.GetName() == Beta_ComboBox.Text);
             bool RequireCalibrationPassword = false;
 
-            RequireCalibrationPassword = this.CheckAnnualCalib(Background, AlphaSource, BetaSource);
-            RequireCalibrationPassword = this.CheckDailyCalib(Background, AlphaSource, BetaSource);
+            if(this.UsingDaily())           
+                RequireCalibrationPassword = this.CheckDailyCalib(Background, AlphaSource, BetaSource);
+            else if (this.UsingAnnual())
+                RequireCalibrationPassword = this.CheckAnnualCalib(Background, AlphaSource, BetaSource);
             //RequireCalibrationPassword = this.CheckChiSquared();
 
             //Check continuous monitor
@@ -122,15 +123,9 @@ namespace DABRAS_Software
                 this.Alpha_SelfAbsorbtion = Convert.ToDouble(this.Alpha_Absorption_Mod_TB.Text);
                 this.Beta_SelfAbsorbtion = Convert.ToDouble(this.Beta_Absorption_Mod_TB.Text);
                 this.Beta_Backscatter = Convert.ToDouble(this.Beta_Backscatter_Mod_TB.Text);
-                this.Contaminant_Removal_Fraction = Convert.ToDouble(this.Removal_Percentage_Mod_TB.Text);
 
                 Alpha_Limit = Convert.ToDouble(this.GrossAlphaDPMLimit_TB.Text);
                 Beta_Limit = Convert.ToDouble(this.GrossBetaDPMLimit_TB.Text);
-
-                if (this.Contaminant_Removal_Fraction > 1.0)
-                {
-                    this.Contaminant_Removal_Fraction /= 100.0;
-                }
 
                 this.Sample_Area = Convert.ToDouble(Area_Mod_TB.Text);
             }
@@ -175,7 +170,6 @@ namespace DABRAS_Software
                 FullDataResults.Columns.Insert(1, DGC);
                 FullDataResults[1, 1].ReadOnly = false; //Allow for user to edit description field
             }
-
             else
             {
                 FullDataResults.Columns.Add("NewColumn", Convert.ToString(index));
@@ -214,11 +208,10 @@ namespace DABRAS_Software
             FullDataResults["NewColumn", 25].Value = this.Alpha_SelfAbsorbtion;
             FullDataResults["NewColumn", 26].Value = this.Beta_SelfAbsorbtion;
             FullDataResults["NewColumn", 27].Value = this.Beta_Backscatter;
-            FullDataResults["NewColumn", 28].Value = this.Contaminant_Removal_Fraction;
-            FullDataResults["NewColumn", 29].Value = this.Sample_Area;
+            FullDataResults["NewColumn", 28].Value = this.Sample_Area;
 
-            FullDataResults["NewColumn", 30].Value = String.Format("{0:G3}", Alpha_Limit);
-            FullDataResults["NewColumn", 31].Value = String.Format("{0:G3}", Beta_Limit);
+            FullDataResults["NewColumn", 29].Value = String.Format("{0:G3}", Alpha_Limit);
+            FullDataResults["NewColumn", 30].Value = String.Format("{0:G3}", Beta_Limit);
 
             //Don't allow the user to edit anything except for the description (It doesn't work the other way!)
             for (int i = 0; i < FullDataResults.RowCount; i++)
@@ -231,12 +224,12 @@ namespace DABRAS_Software
 
             if (this.UsingAnnual())
             {
-                RL = new RoutineSampleListener(this.dabras, SampleTime, 0, this.FullDataResults, Convert.ToInt32(Background.GetCurrentSource().GetAnnualAlphaCPM()), Convert.ToInt32(Background.GetCurrentSource().GetAnnualBetaCPM()), this.Current_Alpha_Eff, this.Current_Beta_Eff, this.Alpha_SelfAbsorbtion, this.Beta_SelfAbsorbtion, this.Beta_Backscatter, this.Contaminant_Removal_Fraction, this.Sample_Area, Background.GetCurrentSource().GetAnnualCalibratedTimespan(), RType, this.AlphaMDA, this.BetaMDA);
+                RL = new RoutineSampleListener(this.dabras, SampleTime, 0, this.FullDataResults, Background.GetCurrentSource().GetAnnualAlphaCPM(),Background.GetCurrentSource().GetAnnualBetaCPM(), this.Current_Alpha_Eff, this.Current_Beta_Eff, this.Alpha_SelfAbsorbtion, this.Beta_SelfAbsorbtion, this.Beta_Backscatter, this.Sample_Area, Background.GetCurrentSource().GetAnnualCalibratedTimespan(), RType, this.AlphaMDA, this.BetaMDA);
             }
 
             if (UsingDaily())
             {
-                RL = new RoutineSampleListener(this.dabras, SampleTime, 0, this.FullDataResults, Convert.ToInt32(Background.GetCurrentSource().GetDailyAlphaCPM()), Convert.ToInt32(Background.GetCurrentSource().GetDailyBetaCPM()), this.Current_Alpha_Eff, this.Current_Beta_Eff, this.Alpha_SelfAbsorbtion, this.Beta_SelfAbsorbtion, this.Beta_Backscatter, this.Contaminant_Removal_Fraction, this.Sample_Area, Background.GetCurrentSource().GetDailyCalibratedTimespan(), RType, this.AlphaMDA, this.BetaMDA);
+                RL = new RoutineSampleListener(this.dabras, SampleTime, 0, this.FullDataResults, Background.GetCurrentSource().GetDailyAlphaCPM(), Background.GetCurrentSource().GetDailyBetaCPM(), this.Current_Alpha_Eff, this.Current_Beta_Eff, this.Alpha_SelfAbsorbtion, this.Beta_SelfAbsorbtion, this.Beta_Backscatter, this.Sample_Area, Background.GetCurrentSource().GetDailyCalibratedTimespan(), RType, this.AlphaMDA, this.BetaMDA);
             }
 
             BackgroundThread = new Thread(() => RL.Run_Sample());
@@ -245,8 +238,7 @@ namespace DABRAS_Software
             RL.BackgroundSampleThreadFinished += (s, args) => { InvokeCallback(); };
             RL.PacketReceived += (s, args) => { InvokeCallback(); };
 
-            SetGUI_RSC(true);
-
+            this.SetGUI_RSC(true);
             this.Alpha_Activity_TB.ForeColor = Color.Black;
             this.Beta_Activity_TB.ForeColor = Color.Black;
 
@@ -265,34 +257,30 @@ namespace DABRAS_Software
         private bool CheckAnnualCalib(RadionuclideFamily bkgrnd, RadionuclideFamily alphasrc, RadionuclideFamily betasrc)
         {
             bool retval = false;
-            if (!Calibrating)
+
+            TimeSpan T = DateTime.Now.Subtract(bkgrnd.GetCurrentSource().GetAnnualCalibratedTime());
+            DateTime CalDue = bkgrnd.GetCurrentSource().GetAnnualCalibratedTime().AddYears(1);
+
+            if (((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0) && (CalDue.Month != DateTime.Now.Month) && (CalDue.Year != DateTime.Now.Year))
             {
-                //Verify that both sources are in calibration
-                //Annual calibration will be due at the end of the month
-                TimeSpan T = DateTime.Now.Subtract(bkgrnd.GetCurrentSource().GetAnnualCalibratedTime());
-                DateTime CalDue = bkgrnd.GetCurrentSource().GetAnnualCalibratedTime().AddYears(1);
+                MessageBox.Show(String.Format("Error: Background annual calibration is out of of date. Last calibrated at {0}", bkgrnd.GetCurrentSource().GetAnnualCalibratedTime()));
+                retval = true;
+            }
 
-                if (((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0) && (CalDue.Month != DateTime.Now.Month) && (CalDue.Year != DateTime.Now.Year))
-                {
-                    MessageBox.Show(String.Format("Error: Background annual calibration is out of of date. Last calibrated at {0}", bkgrnd.GetCurrentSource().GetAnnualCalibratedTime()));
-                    retval = true;
-                }
+            T = DateTime.Now.Subtract(alphasrc.GetCurrentSource().GetAnnualCalibratedTime());
 
-                T = DateTime.Now.Subtract(alphasrc.GetCurrentSource().GetAnnualCalibratedTime());
+            if ((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0)
+            {
+                MessageBox.Show(String.Format("Error: Alpha Source annual calibration is out of of date. Last calibrated at {0}", alphasrc.GetCurrentSource().GetAnnualCalibratedTime()));
+                retval = true;
+            }
 
-                if ((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0)
-                {
-                    MessageBox.Show(String.Format("Error: Alpha Source annual calibration is out of of date. Last calibrated at {0}", alphasrc.GetCurrentSource().GetAnnualCalibratedTime()));
-                    retval = true;
-                }
+            T = DateTime.Now.Subtract(betasrc.GetCurrentSource().GetAnnualCalibratedTime());
 
-                T = DateTime.Now.Subtract(betasrc.GetCurrentSource().GetAnnualCalibratedTime());
-
-                if ((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0)
-                {
-                    MessageBox.Show(String.Format("Error: Beta Source annual calibration is out of of date. Last calibrated at {0}", betasrc.GetCurrentSource().GetAnnualCalibratedTime()));
-                    retval = true;
-                }
+            if ((TimeSpan.Compare(T, new TimeSpan(365, 0, 0, 0))) > 0)
+            {
+                MessageBox.Show(String.Format("Error: Beta Source annual calibration is out of of date. Last calibrated at {0}", betasrc.GetCurrentSource().GetAnnualCalibratedTime()));
+                retval = true;
             }
             return retval;
         }
@@ -300,30 +288,27 @@ namespace DABRAS_Software
         private bool CheckDailyCalib(RadionuclideFamily bkgrnd, RadionuclideFamily alphasrc, RadionuclideFamily betasrc)
         {
             bool retval = false;
-            if (!Calibrating)
+            //Verify that both sources are in calibration
+            TimeSpan T = DateTime.Now.Subtract(bkgrnd.GetCurrentSource().GetDailyCalibratedTime());
+            if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
             {
-                //Verify that both sources are in calibration
-                TimeSpan T = DateTime.Now.Subtract(bkgrnd.GetCurrentSource().GetDailyCalibratedTime());
-                if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
-                {
-                    MessageBox.Show(String.Format("Error: Background daily operational check may be needed. Last performed at {0}", bkgrnd.GetCurrentSource().GetDailyCalibratedTime()));
-                    retval = true;
-                }
+                MessageBox.Show(String.Format("Error: Background daily operational check may be needed. Last performed at {0}", bkgrnd.GetCurrentSource().GetDailyCalibratedTime()));
+                retval = true;
+            }
 
-                T = DateTime.Now.Subtract(alphasrc.GetDailyCalibratedDate());
+            T = DateTime.Now.Subtract(alphasrc.GetDailyCalibratedDate());
 
-                if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
-                {
-                    MessageBox.Show(String.Format("Error: Alpha Source daily operational check needed. Last performed at {0}", alphasrc.GetCurrentSource().GetDailyCalibratedTime()));
-                    retval = true;
-                }
+            if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
+            {
+                MessageBox.Show(String.Format("Error: Alpha Source daily operational check needed. Last performed at {0}", alphasrc.GetCurrentSource().GetDailyCalibratedTime()));
+                retval = true;
+            }
 
-                T = DateTime.Now.Subtract(betasrc.GetDailyCalibratedDate());
-                if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
-                {
-                    MessageBox.Show(String.Format("Error: Beta Source daily operational check needed. Last performed at {0}", betasrc.GetCurrentSource().GetDailyCalibratedTime()));
-                    retval = true;
-                }
+            T = DateTime.Now.Subtract(betasrc.GetDailyCalibratedDate());
+            if ((TimeSpan.Compare(T, new TimeSpan(1, 0, 0, 0))) > 0)
+            {
+                MessageBox.Show(String.Format("Error: Beta Source daily operational check needed. Last performed at {0}", betasrc.GetCurrentSource().GetDailyCalibratedTime()));
+                retval = true;
             }
             return retval;
         }
@@ -371,8 +356,7 @@ namespace DABRAS_Software
                 }
             }
 
-            SetGUI_RSC(true);
-
+            this.SetGUI_RSC(true);
         }
         #endregion
 
@@ -384,7 +368,7 @@ namespace DABRAS_Software
                 RL.RequestPause();
             }
 
-            SetGUI_RSC(false);
+            this.SetGUI_RSC(false);
         }
         #endregion
 
@@ -400,7 +384,7 @@ namespace DABRAS_Software
             this.FullDataResults["NewColumn", 3].Value = "CANCELLED";
             this.Status_Label.Text = "Stopped";
 
-            SetGUI_RSC(false);
+            this.SetGUI_RSC(false);
         }
         #endregion
 
@@ -421,6 +405,8 @@ namespace DABRAS_Software
                         this.lbl_BackgroundType.Text = "Currently set to: " + "Daily";
                     else
                         this.lbl_BackgroundType.Text = "Currently set to: " + "Annual";
+
+                    this.initDataResults();
                 }
 
                 if (NewForm.DialogResult == DialogResult.Abort)
@@ -467,8 +453,11 @@ namespace DABRAS_Software
             RadionuclideFamily RF = this.frmParent.GetListOfFamily().Find(x => x.GetName() == Alpha_ComboBox.Text);
 
             //Set Alpha Efficiency
-            if(RF != null)
+            if (RF != null)
+            {
                 this.Current_Alpha_Eff = RF.GetCurrentSource().GetAlphaEfficiency();
+                this.lblAlphaEff.Text = StaticMethods.RoundToDecimal(this.Current_Alpha_Eff, 2);
+            }
         }
 
         private void Beta_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -476,8 +465,11 @@ namespace DABRAS_Software
             RadionuclideFamily RF = this.frmParent.GetListOfFamily().Find(x => x.GetName() == Beta_ComboBox.Text);
 
             //Set Beta Efficiency
-            if(RF != null)
+            if (RF != null)
+            {
                 this.Current_Beta_Eff = RF.GetCurrentSource().GetBetaEfficiency();
+                this.lblBetaEff.Text = StaticMethods.RoundToDecimal(this.Current_Beta_Eff, 2);
+            }
         }
         #endregion
 
@@ -646,7 +638,6 @@ namespace DABRAS_Software
             this.Alpha_Absorption_Mod_TB.ForeColor = Color.Black;
             this.Beta_Absorption_Mod_TB.ForeColor = Color.Black;
             this.Beta_Backscatter_Mod_TB.ForeColor = Color.Black;
-            this.Removal_Percentage_Mod_TB.ForeColor = Color.Black;
             this.Area_Mod_TB.ForeColor = Color.Black;
         }
 
@@ -671,11 +662,6 @@ namespace DABRAS_Software
                 this.Beta_Backscatter_Mod_TB.ForeColor = Color.Red;
             else
                 this.Beta_Backscatter_Mod_TB.ForeColor = Color.Black;
-
-            if (this.UserMF.GetRemovalFrac() != this.MF.GetRemovalFrac())
-                this.Removal_Percentage_Mod_TB.ForeColor = Color.Red;
-            else
-                this.Removal_Percentage_Mod_TB.ForeColor = Color.Black;
 
             if (this.UserMF.GetDefaultSampleArea() != this.MF.GetDefaultSampleArea())
                 this.Area_Mod_TB.ForeColor = Color.Red;
@@ -720,19 +706,6 @@ namespace DABRAS_Software
             }
             else
                 this.Beta_Backscatter_Mod_TB.ForeColor = Color.Black;
-        }
-
-        private void Removal_Percentage_Mod_TB_LostFocus(object sender, EventArgs e)
-        {
-            double crf = Convert.ToDouble(this.Removal_Percentage_Mod_TB.Text);
-            if (crf != this.MF.GetRemovalFrac())
-            {
-                this.UserMF.SetRemovalFrac(crf);
-                this.Removal_Percentage_Mod_TB.ForeColor = Color.Red;
-                switchToUserValueToolStripMenuItem_Click(null, null);
-            }
-            else
-                this.Removal_Percentage_Mod_TB.ForeColor = Color.Black;
         }
 
         private void Area_Mod_TB_LostFocus(object sender, EventArgs e)
