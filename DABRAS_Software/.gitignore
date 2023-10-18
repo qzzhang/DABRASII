@@ -1,0 +1,5 @@
+# ignore all exe/dll files in the bin/ directory and any of its subdirectories
+bin/
+obj/
+/DefaultConfigurations.cs
+
