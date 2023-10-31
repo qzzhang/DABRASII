@@ -561,9 +561,10 @@ namespace DABRAS_Software
             this.btnAlphaCheck.Enabled = false;
             this.btnBetaCheck.Enabled = false;
             this.ResetQCType(TypeOfQC.Background);
+
             if (this.BackgroundData == null)
                 this.btnAlphaCheck.Enabled = false;
-            else
+            else // If this.BackgroundData is NOT null, we will allow Daily Background Check to be skipped.
                 this.btnAlphaCheck.Enabled = true;
         }
 
@@ -777,6 +778,10 @@ namespace DABRAS_Software
             this.SetGUI(false);
             this.frmParent.isAcquiring = false;
             this.lbl_QCtestDate.Text = "Testing stopped";
+
+            this.resetTabButtons();
+            this.initDataGrid();
+            this.FillWithPreviousData();
         } 
         #endregion
 

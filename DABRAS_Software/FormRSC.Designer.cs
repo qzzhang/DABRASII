@@ -47,19 +47,17 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.Beta_Activity_TB = new System.Windows.Forms.TextBox();
             this.Beta_GCPM_TB = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.Beta_Count_TB = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.Alpha_GCPM_TB = new System.Windows.Forms.TextBox();
-            this.Alpha_Activity_TB = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.Alpha_Count_TB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.Beta_Activity_TB = new System.Windows.Forms.TextBox();
+            this.Alpha_Activity_TB = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Beta_MDA_TB = new System.Windows.Forms.TextBox();
@@ -72,7 +70,6 @@
             this.Status_Label = new System.Windows.Forms.Label();
             this.Elapsed_Time_Label = new System.Windows.Forms.Label();
             this.Preset_Time_Label = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cm_StripModFactors = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.switchToDefaultValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchToUserValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,15 +120,16 @@
             this.lblBetaEff = new System.Windows.Forms.Label();
             this.lblAlphaEff = new System.Windows.Forms.Label();
             this.btn_openLogFolder = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.cm_StripModFactors.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FullDataResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBeta.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label43
@@ -306,153 +304,105 @@
             this.groupBox3.BackColor = System.Drawing.Color.LightSkyBlue;
             this.groupBox3.Controls.Add(this.label41);
             this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.Beta_Activity_TB);
             this.groupBox3.Controls.Add(this.Beta_GCPM_TB);
-            this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label42);
             this.groupBox3.Controls.Add(this.Beta_Count_TB);
-            this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.Alpha_GCPM_TB);
-            this.groupBox3.Controls.Add(this.Alpha_Activity_TB);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.Alpha_Count_TB);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkGreen;
             this.groupBox3.Location = new System.Drawing.Point(12, 265);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1072, 120);
+            this.groupBox3.Size = new System.Drawing.Size(627, 120);
             this.groupBox3.TabIndex = 134;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Count Rate Data";
+            this.groupBox3.Text = "Count Rate Data (in CPM)";
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label41.Location = new System.Drawing.Point(250, 74);
+            this.label41.Location = new System.Drawing.Point(288, 73);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(145, 29);
+            this.label41.Size = new System.Drawing.Size(82, 29);
             this.label41.TabIndex = 81;
-            this.label41.Text = "Gross CPM";
+            this.label41.Text = "Gross";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label17.Location = new System.Drawing.Point(552, 70);
+            this.label17.Location = new System.Drawing.Point(552, 73);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(117, 29);
+            this.label17.Size = new System.Drawing.Size(54, 29);
             this.label17.TabIndex = 33;
-            this.label17.Text = "Net CPM";
-            // 
-            // Beta_Activity_TB
-            // 
-            this.Beta_Activity_TB.Enabled = false;
-            this.Beta_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Beta_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Beta_Activity_TB.Location = new System.Drawing.Point(836, 63);
-            this.Beta_Activity_TB.Name = "Beta_Activity_TB";
-            this.Beta_Activity_TB.Size = new System.Drawing.Size(185, 36);
-            this.Beta_Activity_TB.TabIndex = 45;
+            this.label17.Text = "Net";
             // 
             // Beta_GCPM_TB
             // 
             this.Beta_GCPM_TB.Enabled = false;
             this.Beta_GCPM_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Beta_GCPM_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Beta_GCPM_TB.Location = new System.Drawing.Point(130, 66);
+            this.Beta_GCPM_TB.Location = new System.Drawing.Point(140, 66);
             this.Beta_GCPM_TB.Name = "Beta_GCPM_TB";
-            this.Beta_GCPM_TB.Size = new System.Drawing.Size(119, 36);
+            this.Beta_GCPM_TB.Size = new System.Drawing.Size(147, 36);
             this.Beta_GCPM_TB.TabIndex = 80;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label22.Location = new System.Drawing.Point(1021, 68);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(69, 29);
-            this.label22.TabIndex = 46;
-            this.label22.Text = "DPM";
             // 
             // label42
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label42.Location = new System.Drawing.Point(252, 41);
+            this.label42.Location = new System.Drawing.Point(290, 40);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(145, 29);
+            this.label42.Size = new System.Drawing.Size(82, 29);
             this.label42.TabIndex = 79;
-            this.label42.Text = "Gross CPM";
+            this.label42.Text = "Gross";
             // 
             // Beta_Count_TB
             // 
             this.Beta_Count_TB.Enabled = false;
             this.Beta_Count_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Beta_Count_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Beta_Count_TB.Location = new System.Drawing.Point(355, 63);
+            this.Beta_Count_TB.Location = new System.Drawing.Point(397, 66);
             this.Beta_Count_TB.Name = "Beta_Count_TB";
-            this.Beta_Count_TB.Size = new System.Drawing.Size(196, 36);
+            this.Beta_Count_TB.Size = new System.Drawing.Size(154, 36);
             this.Beta_Count_TB.TabIndex = 32;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label23.Location = new System.Drawing.Point(1021, 37);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(69, 29);
-            this.label23.TabIndex = 44;
-            this.label23.Text = "DPM";
             // 
             // Alpha_GCPM_TB
             // 
             this.Alpha_GCPM_TB.Enabled = false;
             this.Alpha_GCPM_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Alpha_GCPM_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Alpha_GCPM_TB.Location = new System.Drawing.Point(131, 33);
+            this.Alpha_GCPM_TB.Location = new System.Drawing.Point(140, 33);
             this.Alpha_GCPM_TB.Name = "Alpha_GCPM_TB";
-            this.Alpha_GCPM_TB.Size = new System.Drawing.Size(119, 36);
+            this.Alpha_GCPM_TB.Size = new System.Drawing.Size(147, 36);
             this.Alpha_GCPM_TB.TabIndex = 78;
-            // 
-            // Alpha_Activity_TB
-            // 
-            this.Alpha_Activity_TB.Enabled = false;
-            this.Alpha_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Alpha_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Alpha_Activity_TB.Location = new System.Drawing.Point(836, 30);
-            this.Alpha_Activity_TB.Name = "Alpha_Activity_TB";
-            this.Alpha_Activity_TB.Size = new System.Drawing.Size(185, 36);
-            this.Alpha_Activity_TB.TabIndex = 43;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label16.Location = new System.Drawing.Point(552, 36);
+            this.label16.Location = new System.Drawing.Point(552, 39);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(117, 29);
+            this.label16.Size = new System.Drawing.Size(54, 29);
             this.label16.TabIndex = 31;
-            this.label16.Text = "Net CPM";
+            this.label16.Text = "Net";
             // 
             // Alpha_Count_TB
             // 
             this.Alpha_Count_TB.Enabled = false;
             this.Alpha_Count_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Alpha_Count_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Alpha_Count_TB.Location = new System.Drawing.Point(355, 30);
+            this.Alpha_Count_TB.Location = new System.Drawing.Point(397, 33);
             this.Alpha_Count_TB.Name = "Alpha_Count_TB";
-            this.Alpha_Count_TB.Size = new System.Drawing.Size(196, 36);
+            this.Alpha_Count_TB.Size = new System.Drawing.Size(154, 36);
             this.Alpha_Count_TB.TabIndex = 30;
             // 
             // label13
@@ -460,22 +410,11 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label13.Location = new System.Drawing.Point(3, 72);
+            this.label13.Location = new System.Drawing.Point(13, 72);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(186, 29);
             this.label13.TabIndex = 27;
             this.label13.Text = "Beta at 1.645σ:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label26.Location = new System.Drawing.Point(655, 70);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(274, 29);
-            this.label26.TabIndex = 40;
-            this.label26.Text = "Beta Activity at 1.645σ:";
             // 
             // label12
             // 
@@ -488,23 +427,56 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Alpha at 1.645σ:";
             // 
+            // Beta_Activity_TB
+            // 
+            this.Beta_Activity_TB.Enabled = false;
+            this.Beta_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Beta_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Beta_Activity_TB.Location = new System.Drawing.Point(204, 105);
+            this.Beta_Activity_TB.Name = "Beta_Activity_TB";
+            this.Beta_Activity_TB.Size = new System.Drawing.Size(208, 36);
+            this.Beta_Activity_TB.TabIndex = 45;
+            // 
+            // Alpha_Activity_TB
+            // 
+            this.Alpha_Activity_TB.Enabled = false;
+            this.Alpha_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Alpha_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Alpha_Activity_TB.Location = new System.Drawing.Point(202, 47);
+            this.Alpha_Activity_TB.Name = "Alpha_Activity_TB";
+            this.Alpha_Activity_TB.Size = new System.Drawing.Size(208, 36);
+            this.Alpha_Activity_TB.TabIndex = 43;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Honeydew;
+            this.label26.Location = new System.Drawing.Point(22, 108);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(232, 36);
+            this.label26.TabIndex = 40;
+            this.label26.Text = "Beta at 1.645σ:";
+            // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label27.Location = new System.Drawing.Point(651, 36);
+            this.label27.BackColor = System.Drawing.Color.Teal;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Honeydew;
+            this.label27.Location = new System.Drawing.Point(9, 52);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(287, 29);
+            this.label27.Size = new System.Drawing.Size(251, 36);
             this.label27.TabIndex = 39;
-            this.label27.Text = "Alpha Activity at 1.645σ:";
+            this.label27.Text = "Alpha at 1.645σ:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.MintCream;
-            this.label10.Location = new System.Drawing.Point(623, 239);
+            this.label10.Location = new System.Drawing.Point(570, 239);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 29);
             this.label10.TabIndex = 132;
@@ -513,7 +485,7 @@
             // Beta_MDA_TB
             // 
             this.Beta_MDA_TB.Enabled = false;
-            this.Beta_MDA_TB.Location = new System.Drawing.Point(500, 239);
+            this.Beta_MDA_TB.Location = new System.Drawing.Point(447, 239);
             this.Beta_MDA_TB.Name = "Beta_MDA_TB";
             this.Beta_MDA_TB.Size = new System.Drawing.Size(117, 26);
             this.Beta_MDA_TB.TabIndex = 131;
@@ -523,7 +495,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.MintCream;
-            this.label9.Location = new System.Drawing.Point(623, 209);
+            this.label9.Location = new System.Drawing.Point(570, 209);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 29);
             this.label9.TabIndex = 130;
@@ -532,7 +504,7 @@
             // Alpha_MDA_TB
             // 
             this.Alpha_MDA_TB.Enabled = false;
-            this.Alpha_MDA_TB.Location = new System.Drawing.Point(500, 213);
+            this.Alpha_MDA_TB.Location = new System.Drawing.Point(447, 213);
             this.Alpha_MDA_TB.Name = "Alpha_MDA_TB";
             this.Alpha_MDA_TB.Size = new System.Drawing.Size(117, 26);
             this.Alpha_MDA_TB.TabIndex = 129;
@@ -542,7 +514,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MintCream;
-            this.label8.Location = new System.Drawing.Point(405, 240);
+            this.label8.Location = new System.Drawing.Point(352, 240);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 29);
             this.label8.TabIndex = 128;
@@ -553,7 +525,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.MintCream;
-            this.label7.Location = new System.Drawing.Point(405, 214);
+            this.label7.Location = new System.Drawing.Point(352, 214);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 29);
             this.label7.TabIndex = 127;
@@ -608,30 +580,6 @@
             this.Preset_Time_Label.TabIndex = 122;
             this.Preset_Time_Label.Text = "Preset Time = ";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.groupBox5.ContextMenuStrip = this.cm_StripModFactors;
-            this.groupBox5.Controls.Add(this.label35);
-            this.groupBox5.Controls.Add(this.Area_Mod_TB);
-            this.groupBox5.Controls.Add(this.Beta_Backscatter_Mod_TB);
-            this.groupBox5.Controls.Add(this.Beta_Absorption_Mod_TB);
-            this.groupBox5.Controls.Add(this.Alpha_Absorption_Mod_TB);
-            this.groupBox5.Controls.Add(this.label33);
-            this.groupBox5.Controls.Add(this.label32);
-            this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.label29);
-            this.groupBox5.Enabled = false;
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(755, 33);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(329, 155);
-            this.groupBox5.TabIndex = 121;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Select Modification Factors";
-            this.groupBox5.Visible = false;
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
-            // 
             // cm_StripModFactors
             // 
             this.cm_StripModFactors.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -668,7 +616,7 @@
             // 
             this.Area_Mod_TB.Location = new System.Drawing.Point(245, 116);
             this.Area_Mod_TB.Name = "Area_Mod_TB";
-            this.Area_Mod_TB.Size = new System.Drawing.Size(61, 30);
+            this.Area_Mod_TB.Size = new System.Drawing.Size(61, 26);
             this.Area_Mod_TB.TabIndex = 73;
             this.Area_Mod_TB.Text = "100";
             this.Area_Mod_TB.LostFocus += new System.EventHandler(this.Area_Mod_TB_LostFocus);
@@ -677,7 +625,7 @@
             // 
             this.Beta_Backscatter_Mod_TB.Location = new System.Drawing.Point(245, 88);
             this.Beta_Backscatter_Mod_TB.Name = "Beta_Backscatter_Mod_TB";
-            this.Beta_Backscatter_Mod_TB.Size = new System.Drawing.Size(61, 30);
+            this.Beta_Backscatter_Mod_TB.Size = new System.Drawing.Size(61, 26);
             this.Beta_Backscatter_Mod_TB.TabIndex = 71;
             this.Beta_Backscatter_Mod_TB.Text = "1.0";
             this.Beta_Backscatter_Mod_TB.LostFocus += new System.EventHandler(this.Beta_Backscatter_Mod_TB_LostFocus);
@@ -686,7 +634,7 @@
             // 
             this.Beta_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 62);
             this.Beta_Absorption_Mod_TB.Name = "Beta_Absorption_Mod_TB";
-            this.Beta_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 30);
+            this.Beta_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 26);
             this.Beta_Absorption_Mod_TB.TabIndex = 70;
             this.Beta_Absorption_Mod_TB.Text = "1.0";
             this.Beta_Absorption_Mod_TB.LostFocus += new System.EventHandler(this.Beta_Absorption_Mod_TB_LostFocus);
@@ -695,7 +643,7 @@
             // 
             this.Alpha_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 36);
             this.Alpha_Absorption_Mod_TB.Name = "Alpha_Absorption_Mod_TB";
-            this.Alpha_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 30);
+            this.Alpha_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 26);
             this.Alpha_Absorption_Mod_TB.TabIndex = 69;
             this.Alpha_Absorption_Mod_TB.Text = "1.0";
             this.Alpha_Absorption_Mod_TB.LostFocus += new System.EventHandler(this.Alpha_Absorption_Mod_TB_LostFocus);
@@ -1028,7 +976,7 @@
             this.groupBox1.Size = new System.Drawing.Size(279, 141);
             this.groupBox1.TabIndex = 142;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Counting";
+            this.groupBox1.Text = "Count Control";
             // 
             // groupBeta
             // 
@@ -1039,7 +987,7 @@
             this.groupBeta.Controls.Add(this._100_200_Energy_Button);
             this.groupBeta.Enabled = false;
             this.groupBeta.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBeta.Location = new System.Drawing.Point(755, 195);
+            this.groupBeta.Location = new System.Drawing.Point(755, 131);
             this.groupBeta.Margin = new System.Windows.Forms.Padding(4);
             this.groupBeta.Name = "groupBeta";
             this.groupBeta.Padding = new System.Windows.Forms.Padding(4);
@@ -1117,7 +1065,7 @@
             this.groupBox7.Controls.Add(this.btn_SetBackgroundType);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox7.Location = new System.Drawing.Point(790, 391);
+            this.groupBox7.Location = new System.Drawing.Point(789, 391);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(294, 69);
             this.groupBox7.TabIndex = 144;
@@ -1190,12 +1138,29 @@
             this.btn_openLogFolder.UseVisualStyleBackColor = true;
             this.btn_openLogFolder.Click += new System.EventHandler(this.btn_openLogFolder_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Teal;
+            this.groupBox5.Controls.Add(this.Alpha_Activity_TB);
+            this.groupBox5.Controls.Add(this.Beta_Activity_TB);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Location = new System.Drawing.Point(638, 209);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(447, 178);
+            this.groupBox5.TabIndex = 152;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Activity (DPM)";
+            // 
             // FormRSC
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(1141, 735);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btn_openLogFolder);
             this.Controls.Add(this.lblBetaEff);
             this.Controls.Add(this.lblAlphaEff);
@@ -1216,7 +1181,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Beta_ComboBox);
             this.Controls.Add(this.Alpha_ComboBox);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Description_TB);
             this.Controls.Add(this.labSampleDesc);
@@ -1229,8 +1193,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.cm_StripModFactors.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1241,6 +1203,8 @@
             this.groupBeta.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1270,9 +1234,7 @@
         private System.Windows.Forms.TextBox Alpha_GCPM_TB;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox Beta_Activity_TB;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox Beta_Count_TB;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox Alpha_Activity_TB;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox Alpha_Count_TB;
@@ -1291,7 +1253,6 @@
         private System.Windows.Forms.Label Status_Label;
         private System.Windows.Forms.Label Elapsed_Time_Label;
         private System.Windows.Forms.Label Preset_Time_Label;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox Area_Mod_TB;
         private System.Windows.Forms.TextBox Beta_Backscatter_Mod_TB;
@@ -1342,5 +1303,6 @@
         private System.Windows.Forms.Label lblBetaEff;
         private System.Windows.Forms.Label lblAlphaEff;
         private System.Windows.Forms.Button btn_openLogFolder;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

@@ -32,6 +32,13 @@ namespace DABRAS_Software
                 return;
             }
 
+            if(!QCBG.WasTestCompleted())
+            {
+                MessageBox.Show("Background QC testing interrupted!");
+                this.lbl_QCtestDate.Text = "Test interrupted, use previous data.";
+                return;
+            }
+
             string Comment = "";
             if (QCBG.WasTestPassed() && QCBG.WasTestCompleted())
             {
@@ -97,6 +104,12 @@ namespace DABRAS_Software
                 return;
             }
 
+            if (!QCAB.WasTestCompleted())
+            {
+                MessageBox.Show("Alpha/Beta QC testing interrupted!");
+                this.lbl_QCtestDate.Text = "Test interrupted, use previous data.";
+                return;
+            }
             if (QCAB.WasTestPassed() && QCAB.WasTestCompleted())
             {
                 this.abPassed = true;
@@ -587,7 +600,7 @@ namespace DABRAS_Software
             this.SampleTime = _SampleTime;
             this.NumSamples = _NumSamples;
             this.TestStarted = _Today;
-            WasBackgroundFinishedSuccessfully = false;
+            this.WasBackgroundFinishedSuccessfully = false;
             ShouldStop = false;
 
             this.AlphaHi = _AH;
@@ -657,7 +670,7 @@ namespace DABRAS_Software
                 this.frmCaller.refreshConnectStatus();
                 DABRAS.DisableWatchdog();
                 this.frmCaller.isAcquiring = false;
-                WasBackgroundFinishedSuccessfully = false;
+                this.WasBackgroundFinishedSuccessfully = false;
 
                 if (BackgroundThreadFinished != null)
                 {
@@ -1010,7 +1023,7 @@ namespace DABRAS_Software
             this.QC_Table = _QC_Table;
             this.SampleTime = _SampleTime;
             this.NumSamples = _NumSamples;
-            WasBackgroundFinishedSuccessfully = false;
+            this.WasBackgroundFinishedSuccessfully = false;
             ShouldStop = false;
 
             this.TestStarted = _Today;
@@ -1061,7 +1074,7 @@ namespace DABRAS_Software
 
                 this.frmCaller.isAcquiring = false;
 
-                WasBackgroundFinishedSuccessfully = false;
+                this.WasBackgroundFinishedSuccessfully = false;
 
                 if (BackgroundThreadFinished != null)
                 {
@@ -1414,7 +1427,7 @@ namespace DABRAS_Software
                     }
                     else
                         return;
-                   }//first good packet of data
+                }//first good packet of data
 
                 //Do not increment the row index until the current sample time has elapsed
                 while (!RowComplete && !ShouldStop)

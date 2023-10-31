@@ -44,9 +44,10 @@
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.Maroon;
-            this.SubmitButton.Location = new System.Drawing.Point(154, 98);
+            this.SubmitButton.Location = new System.Drawing.Point(231, 151);
+            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(75, 39);
+            this.SubmitButton.Size = new System.Drawing.Size(112, 60);
             this.SubmitButton.TabIndex = 0;
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -56,9 +57,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 12);
+            this.label1.Location = new System.Drawing.Point(90, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 20);
+            this.label1.Size = new System.Drawing.Size(120, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Building #";
             // 
@@ -70,9 +72,10 @@
             this.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel_Button.ForeColor = System.Drawing.Color.Maroon;
-            this.Cancel_Button.Location = new System.Drawing.Point(240, 98);
+            this.Cancel_Button.Location = new System.Drawing.Point(360, 151);
+            this.Cancel_Button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Cancel_Button.Name = "Cancel_Button";
-            this.Cancel_Button.Size = new System.Drawing.Size(75, 39);
+            this.Cancel_Button.Size = new System.Drawing.Size(112, 60);
             this.Cancel_Button.TabIndex = 2;
             this.Cancel_Button.Text = "Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
@@ -80,39 +83,43 @@
             // 
             // Building_TB
             // 
-            this.Building_TB.Location = new System.Drawing.Point(144, 12);
+            this.Building_TB.Location = new System.Drawing.Point(216, 18);
+            this.Building_TB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Building_TB.Name = "Building_TB";
-            this.Building_TB.Size = new System.Drawing.Size(181, 20);
+            this.Building_TB.Size = new System.Drawing.Size(270, 26);
             this.Building_TB.TabIndex = 3;
             // 
             // Set_TB
             // 
-            this.Set_TB.Location = new System.Drawing.Point(144, 56);
+            this.Set_TB.Location = new System.Drawing.Point(216, 86);
+            this.Set_TB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Set_TB.Name = "Set_TB";
-            this.Set_TB.Size = new System.Drawing.Size(181, 20);
+            this.Set_TB.Size = new System.Drawing.Size(270, 26);
             this.Set_TB.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(95, 56);
+            this.label2.Location = new System.Drawing.Point(142, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 20);
+            this.label2.Size = new System.Drawing.Size(68, 29);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Set#";
+            this.label2.Text = "Set #";
             // 
             // BuildingNumber
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 149);
+            this.ClientSize = new System.Drawing.Size(621, 229);
             this.Controls.Add(this.Set_TB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Building_TB);
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SubmitButton);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BuildingNumber";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Set Building Number & Set uid";
