@@ -1,3 +1,7 @@
 *.htm
 DefaultPassword.txt
+<<<<<<< HEAD
 DABRAS-II_Software_Documentation.docx
+=======
+DABRAS-II_Software_Documentation.docx
+>>>>>>> 66cc4ad (added changes related to RCS decimal points and DPM activity display; allowing QC tests to be stopped and/or skipped during running)

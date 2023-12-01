@@ -2,4 +2,7 @@
 bin/
 obj/
 /DefaultConfigurations.cs
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66cc4ad (added changes related to RCS decimal points and DPM activity display; allowing QC tests to be stopped and/or skipped during running)
