@@ -542,22 +542,33 @@ namespace DABRAS_Software
             }
 
             return;
-        }
+        } 
 
         private void SetGUI_RSC(bool Running)
         {
-            this.New_Count_Button.Enabled = !Running;
-            this.Continue_Count_Button.Enabled = !Running;
-            this.btn_SetBackgroundType.Enabled = !Running;
-            this.Min_TB.Enabled = !Running;
-            this.Sec_TB.Enabled = !Running;
-            this.AlphaMDALimit_TB.Enabled = !Running;
-            this.BetaMDALimit_TB.Enabled = !Running;
-            this.TimeRadioButton.Enabled = !Running;
-            this.CountMDARadioButton.Enabled = !Running;
+            if (this.Status_Label.Text == "Paused")
+            {
+                this.New_Count_Button.Enabled = false;
+                this.PauseButton.Enabled = false;
+                this.Stop_Count_Button.Enabled = true;
+                this.Continue_Count_Button.Enabled = true;
+            }
+            else
+            {
+                this.New_Count_Button.Enabled = !Running;
+                this.btn_SetBackgroundType.Enabled = !Running;
+                this.Min_TB.Enabled = !Running;
+                this.Sec_TB.Enabled = !Running;
+                this.AlphaMDALimit_TB.Enabled = !Running;
+                this.BetaMDALimit_TB.Enabled = !Running;
+                this.TimeRadioButton.Enabled = !Running;
+                this.CountMDARadioButton.Enabled = !Running;
 
-            this.PauseButton.Enabled = Running;
-            this.Stop_Count_Button.Enabled = Running;
+                this.Continue_Count_Button.Enabled = false;
+
+                this.PauseButton.Enabled = Running;
+                this.Stop_Count_Button.Enabled = Running;
+            }
         }
 
         private IDictionary<string, string> WriteMetaData()
@@ -1137,6 +1148,17 @@ namespace DABRAS_Software
                     DataGridViewCell GrossAlphaCPMCell = FullResults_Table[1, 7];
                     DataGridViewCell GrossBetaCPMCell = FullResults_Table[1, 8];
 
+                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 9];
+                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 10];
+                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 11];
+                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 12];
+                    /*
+                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 31];
+                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 32];
+                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 33];
+                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 34];
+                    */
+
                     DataGridViewCell AlphaLcCell = FullResults_Table[1, 13];
                     DataGridViewCell BetaLcCell = FullResults_Table[1, 14];
                     DataGridViewCell AlphaSrcMDACell = FullResults_Table[1, 15];
@@ -1145,16 +1167,6 @@ namespace DABRAS_Software
                     DataGridViewCell NetBetaCPMCell = FullResults_Table[1, 18];
                     DataGridViewCell NetAlphaUncertaintyCell = FullResults_Table[1, 19];
                     DataGridViewCell NetBetaUncertaintyCell = FullResults_Table[1, 20];
-                    /*
-                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 31];
-                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 32];
-                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 33];
-                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 34];
-                    */
-                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 9];
-                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 10];
-                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 11];
-                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 12];
 
                     //Parse data to form
                     this.ElapsedTime = IncomingData.ElTime;
@@ -1178,7 +1190,7 @@ namespace DABRAS_Software
                         double netbetaUncer = Math.Sqrt(Math.Abs(netbetaCPM));
                         NetBetaCPMCell.Value = StaticMethods.RoundToDecimal(netbetaCPM, 2);
                         NetBetaUncertaintyCell.Value = StaticMethods.RoundToDecimal(netbetaUncer, 2);
-                        SamplingTime.Value = totTime;
+                        SamplingTime.Value = StaticMethods.RoundToDecimal(totTime, 2);
 
                         //Lc Formula
                         double alphaLc = ConfRange * Math.Sqrt(AlphaBackground * (1.0 / (Convert.ToDouble(BackgroundCountTime) / 60.0) + 1.0 / totTime));

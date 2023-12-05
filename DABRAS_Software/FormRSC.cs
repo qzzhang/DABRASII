@@ -81,14 +81,41 @@ namespace DABRAS_Software
         }
         #endregion
 
-        // To ensure KeyPress of character keys can be detected even if the focus is on an item of the form instead of the keyboard
+        // To ensure KeyPress of character keys can be detected
+        // even if the focus is on an item of the form instead of the keyboard
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Alt | Keys.C ))
             {
                 MessageBox.Show("You pressed Alt+C!");
-                this.New_Count_Button_Click(this, null);
-
+                if (this.New_Count_Button.Enabled)
+                {
+                    this.New_Count_Button_Click(this, null);
+                }
+            }
+            else if (keyData == (Keys.Alt | Keys.S))
+            {
+                MessageBox.Show("You pressed Alt+S!");
+                if (this.Stop_Count_Button.Enabled)
+                {
+                    this.Stop_Count_Button_Click(this, null);
+                }
+            }
+            else if (keyData == (Keys.Alt | Keys.R))
+            {
+                MessageBox.Show("You pressed Alt+R!");
+                if (this.Continue_Count_Button.Enabled)
+                {
+                    this.Continue_Count_Button_Click(this, null);
+                }
+            }
+            else if (keyData == (Keys.Alt | Keys.P))
+            {
+                MessageBox.Show("You pressed Alt+P!");
+                if (this.PauseButton.Enabled)
+                {
+                    this.PauseButton_Click(this, null);
+                }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -148,8 +175,9 @@ namespace DABRAS_Software
                 MessageBox.Show("Invalid values");
                 return;
             }
-
-            if (!Calibrating)
+            MessageBox.Show("EventArgs: " + e);
+            // Using e != null to ensure a non-hotkey (a MouseEventArgs) was pressed
+            if (!Calibrating  && e != null)
             {
                 if (this.RType == RoutineSampleCountType.Time)
                 {

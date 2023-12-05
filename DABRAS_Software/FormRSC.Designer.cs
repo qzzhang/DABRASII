@@ -774,7 +774,7 @@
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(127, 37);
             this.PauseButton.TabIndex = 119;
-            this.PauseButton.Text = "Pause";
+            this.PauseButton.Text = "&Pause";
             this.PauseButton.UseVisualStyleBackColor = false;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
@@ -952,7 +952,7 @@
             this.Stop_Count_Button.Name = "Stop_Count_Button";
             this.Stop_Count_Button.Size = new System.Drawing.Size(127, 35);
             this.Stop_Count_Button.TabIndex = 114;
-            this.Stop_Count_Button.Text = "Stop";
+            this.Stop_Count_Button.Text = "&Stop";
             this.Stop_Count_Button.UseVisualStyleBackColor = false;
             this.Stop_Count_Button.Click += new System.EventHandler(this.Stop_Count_Button_Click);
             // 
@@ -968,7 +968,7 @@
             this.Continue_Count_Button.Name = "Continue_Count_Button";
             this.Continue_Count_Button.Size = new System.Drawing.Size(127, 37);
             this.Continue_Count_Button.TabIndex = 113;
-            this.Continue_Count_Button.Text = "Resume";
+            this.Continue_Count_Button.Text = "&Resume";
             this.Continue_Count_Button.UseVisualStyleBackColor = false;
             this.Continue_Count_Button.Click += new System.EventHandler(this.Continue_Count_Button_Click);
             // 
@@ -1220,7 +1220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1141, 735);
+            this.ClientSize = new System.Drawing.Size(1158, 735);
             this.Controls.Add(this.btn_openLogFolder);
             this.Controls.Add(this.lblBetaEff);
             this.Controls.Add(this.lblAlphaEff);
