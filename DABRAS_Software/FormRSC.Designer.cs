@@ -380,9 +380,9 @@
             this.Beta_Activity_TB.Enabled = false;
             this.Beta_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Beta_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Beta_Activity_TB.Location = new System.Drawing.Point(818, 73);
+            this.Beta_Activity_TB.Location = new System.Drawing.Point(800, 78);
             this.Beta_Activity_TB.Name = "Beta_Activity_TB";
-            this.Beta_Activity_TB.Size = new System.Drawing.Size(179, 29);
+            this.Beta_Activity_TB.Size = new System.Drawing.Size(188, 29);
             this.Beta_Activity_TB.TabIndex = 45;
             // 
             // Beta_GCPM_TB
@@ -399,11 +399,11 @@
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Yellow;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(1003, 76);
+            this.label22.Location = new System.Drawing.Point(995, 78);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(62, 25);
+            this.label22.Size = new System.Drawing.Size(66, 29);
             this.label22.TabIndex = 46;
             this.label22.Text = "DPM";
             // 
@@ -432,11 +432,11 @@
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Yellow;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(1003, 33);
+            this.label23.Location = new System.Drawing.Point(995, 37);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(62, 25);
+            this.label23.Size = new System.Drawing.Size(66, 29);
             this.label23.TabIndex = 44;
             this.label23.Text = "DPM";
             // 
@@ -455,9 +455,9 @@
             this.Alpha_Activity_TB.Enabled = false;
             this.Alpha_Activity_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Alpha_Activity_TB.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Alpha_Activity_TB.Location = new System.Drawing.Point(818, 31);
+            this.Alpha_Activity_TB.Location = new System.Drawing.Point(800, 36);
             this.Alpha_Activity_TB.Name = "Alpha_Activity_TB";
-            this.Alpha_Activity_TB.Size = new System.Drawing.Size(179, 29);
+            this.Alpha_Activity_TB.Size = new System.Drawing.Size(188, 29);
             this.Alpha_Activity_TB.TabIndex = 43;
             // 
             // label16
@@ -495,11 +495,11 @@
             // 
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Yellow;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(609, 68);
+            this.label26.Location = new System.Drawing.Point(618, 75);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(204, 37);
+            this.label26.Size = new System.Drawing.Size(176, 33);
             this.label26.TabIndex = 40;
             this.label26.Text = "Beta Activity";
             // 
@@ -518,11 +518,11 @@
             // 
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.Yellow;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(590, 28);
+            this.label27.Location = new System.Drawing.Point(603, 35);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(223, 37);
+            this.label27.Size = new System.Drawing.Size(191, 33);
             this.label27.TabIndex = 39;
             this.label27.Text = "Alpha Activity";
             // 
@@ -609,7 +609,7 @@
             this.Status_Label.AutoSize = true;
             this.Status_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Status_Label.ForeColor = System.Drawing.Color.Red;
-            this.Status_Label.Location = new System.Drawing.Point(170, 113);
+            this.Status_Label.Location = new System.Drawing.Point(259, 53);
             this.Status_Label.Name = "Status_Label";
             this.Status_Label.Size = new System.Drawing.Size(70, 20);
             this.Status_Label.TabIndex = 124;
@@ -650,9 +650,9 @@
             this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Enabled = false;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(755, 33);
+            this.groupBox5.Location = new System.Drawing.Point(781, 33);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(329, 155);
+            this.groupBox5.Size = new System.Drawing.Size(303, 155);
             this.groupBox5.TabIndex = 121;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Select Modification Factors";
@@ -691,7 +691,7 @@
             // 
             // Area_Mod_TB
             // 
-            this.Area_Mod_TB.Location = new System.Drawing.Point(245, 116);
+            this.Area_Mod_TB.Location = new System.Drawing.Point(235, 116);
             this.Area_Mod_TB.Name = "Area_Mod_TB";
             this.Area_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Area_Mod_TB.TabIndex = 73;
@@ -700,7 +700,7 @@
             // 
             // Beta_Backscatter_Mod_TB
             // 
-            this.Beta_Backscatter_Mod_TB.Location = new System.Drawing.Point(245, 88);
+            this.Beta_Backscatter_Mod_TB.Location = new System.Drawing.Point(235, 88);
             this.Beta_Backscatter_Mod_TB.Name = "Beta_Backscatter_Mod_TB";
             this.Beta_Backscatter_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Beta_Backscatter_Mod_TB.TabIndex = 71;
@@ -709,7 +709,7 @@
             // 
             // Beta_Absorption_Mod_TB
             // 
-            this.Beta_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 62);
+            this.Beta_Absorption_Mod_TB.Location = new System.Drawing.Point(235, 62);
             this.Beta_Absorption_Mod_TB.Name = "Beta_Absorption_Mod_TB";
             this.Beta_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Beta_Absorption_Mod_TB.TabIndex = 70;
@@ -718,7 +718,7 @@
             // 
             // Alpha_Absorption_Mod_TB
             // 
-            this.Alpha_Absorption_Mod_TB.Location = new System.Drawing.Point(245, 36);
+            this.Alpha_Absorption_Mod_TB.Location = new System.Drawing.Point(235, 36);
             this.Alpha_Absorption_Mod_TB.Name = "Alpha_Absorption_Mod_TB";
             this.Alpha_Absorption_Mod_TB.Size = new System.Drawing.Size(61, 22);
             this.Alpha_Absorption_Mod_TB.TabIndex = 69;
@@ -770,9 +770,9 @@
             this.PauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PauseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PauseButton.ForeColor = System.Drawing.Color.Maroon;
-            this.PauseButton.Location = new System.Drawing.Point(140, 65);
+            this.PauseButton.Location = new System.Drawing.Point(141, 68);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(127, 37);
+            this.PauseButton.Size = new System.Drawing.Size(106, 37);
             this.PauseButton.TabIndex = 119;
             this.PauseButton.Text = "&Pause";
             this.PauseButton.UseVisualStyleBackColor = false;
@@ -817,7 +817,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 50);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 135);
+            this.groupBox2.Size = new System.Drawing.Size(430, 122);
             this.groupBox2.TabIndex = 117;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test Parameters";
@@ -825,7 +825,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(183, 103);
+            this.label38.Location = new System.Drawing.Point(183, 96);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(37, 16);
             this.label38.TabIndex = 79;
@@ -834,7 +834,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(183, 77);
+            this.label37.Location = new System.Drawing.Point(183, 70);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(37, 16);
             this.label37.TabIndex = 78;
@@ -843,7 +843,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(45, 103);
+            this.label36.Location = new System.Drawing.Point(45, 96);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(78, 16);
             this.label36.TabIndex = 79;
@@ -852,7 +852,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(40, 77);
+            this.label20.Location = new System.Drawing.Point(40, 70);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(85, 16);
             this.label20.TabIndex = 78;
@@ -861,7 +861,7 @@
             // CountMDARadioButton
             // 
             this.CountMDARadioButton.AutoSize = true;
-            this.CountMDARadioButton.Location = new System.Drawing.Point(14, 77);
+            this.CountMDARadioButton.Location = new System.Drawing.Point(14, 70);
             this.CountMDARadioButton.Name = "CountMDARadioButton";
             this.CountMDARadioButton.Size = new System.Drawing.Size(14, 13);
             this.CountMDARadioButton.TabIndex = 82;
@@ -872,7 +872,7 @@
             // 
             this.TimeRadioButton.AutoSize = true;
             this.TimeRadioButton.Checked = true;
-            this.TimeRadioButton.Location = new System.Drawing.Point(14, 36);
+            this.TimeRadioButton.Location = new System.Drawing.Point(14, 29);
             this.TimeRadioButton.Name = "TimeRadioButton";
             this.TimeRadioButton.Size = new System.Drawing.Size(14, 13);
             this.TimeRadioButton.TabIndex = 80;
@@ -882,7 +882,7 @@
             // 
             // BetaMDALimit_TB
             // 
-            this.BetaMDALimit_TB.Location = new System.Drawing.Point(129, 100);
+            this.BetaMDALimit_TB.Location = new System.Drawing.Point(129, 93);
             this.BetaMDALimit_TB.Name = "BetaMDALimit_TB";
             this.BetaMDALimit_TB.Size = new System.Drawing.Size(48, 22);
             this.BetaMDALimit_TB.TabIndex = 78;
@@ -890,7 +890,7 @@
             // 
             // AlphaMDALimit_TB
             // 
-            this.AlphaMDALimit_TB.Location = new System.Drawing.Point(129, 74);
+            this.AlphaMDALimit_TB.Location = new System.Drawing.Point(129, 67);
             this.AlphaMDALimit_TB.Name = "AlphaMDALimit_TB";
             this.AlphaMDALimit_TB.Size = new System.Drawing.Size(48, 22);
             this.AlphaMDALimit_TB.TabIndex = 79;
@@ -899,7 +899,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 56);
+            this.label6.Location = new System.Drawing.Point(138, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 16);
             this.label6.TabIndex = 13;
@@ -908,7 +908,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(72, 56);
+            this.label5.Location = new System.Drawing.Point(64, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 16);
             this.label5.TabIndex = 12;
@@ -916,7 +916,7 @@
             // 
             // Sec_TB
             // 
-            this.Sec_TB.Location = new System.Drawing.Point(137, 33);
+            this.Sec_TB.Location = new System.Drawing.Point(137, 26);
             this.Sec_TB.Name = "Sec_TB";
             this.Sec_TB.Size = new System.Drawing.Size(48, 22);
             this.Sec_TB.TabIndex = 11;
@@ -926,7 +926,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(118, 33);
+            this.label4.Location = new System.Drawing.Point(118, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(13, 20);
             this.label4.TabIndex = 10;
@@ -934,7 +934,7 @@
             // 
             // Min_TB
             // 
-            this.Min_TB.Location = new System.Drawing.Point(64, 33);
+            this.Min_TB.Location = new System.Drawing.Point(64, 26);
             this.Min_TB.Name = "Min_TB";
             this.Min_TB.Size = new System.Drawing.Size(48, 22);
             this.Min_TB.TabIndex = 9;
@@ -948,9 +948,9 @@
             this.Stop_Count_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Stop_Count_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stop_Count_Button.ForeColor = System.Drawing.Color.Red;
-            this.Stop_Count_Button.Location = new System.Drawing.Point(140, 23);
+            this.Stop_Count_Button.Location = new System.Drawing.Point(141, 23);
             this.Stop_Count_Button.Name = "Stop_Count_Button";
-            this.Stop_Count_Button.Size = new System.Drawing.Size(127, 35);
+            this.Stop_Count_Button.Size = new System.Drawing.Size(106, 35);
             this.Stop_Count_Button.TabIndex = 114;
             this.Stop_Count_Button.Text = "&Stop";
             this.Stop_Count_Button.UseVisualStyleBackColor = false;
@@ -964,9 +964,9 @@
             this.Continue_Count_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Continue_Count_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Continue_Count_Button.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Continue_Count_Button.Location = new System.Drawing.Point(7, 65);
+            this.Continue_Count_Button.Location = new System.Drawing.Point(7, 68);
             this.Continue_Count_Button.Name = "Continue_Count_Button";
-            this.Continue_Count_Button.Size = new System.Drawing.Size(127, 37);
+            this.Continue_Count_Button.Size = new System.Drawing.Size(128, 37);
             this.Continue_Count_Button.TabIndex = 113;
             this.Continue_Count_Button.Text = "&Resume";
             this.Continue_Count_Button.UseVisualStyleBackColor = false;
@@ -983,7 +983,7 @@
             this.New_Count_Button.ForeColor = System.Drawing.Color.Green;
             this.New_Count_Button.Location = new System.Drawing.Point(7, 22);
             this.New_Count_Button.Name = "New_Count_Button";
-            this.New_Count_Button.Size = new System.Drawing.Size(127, 37);
+            this.New_Count_Button.Size = new System.Drawing.Size(128, 37);
             this.New_Count_Button.TabIndex = 112;
             this.New_Count_Button.Text = "Start &Counting";
             this.New_Count_Button.UseVisualStyleBackColor = false;
@@ -1050,7 +1050,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(448, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 138);
+            this.groupBox1.Size = new System.Drawing.Size(358, 122);
             this.groupBox1.TabIndex = 142;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Counting";

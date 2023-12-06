@@ -96,18 +96,18 @@ namespace DABRAS_Software
             //try { this.Alpha_MDA_TB.Text = Convert.ToDecimal(FullDataResults[1, 15].Value).ToString("F"); }
             //catch { ;}
 
-            if (Double.IsInfinity(Convert.ToDouble(FullDataResults[1, 15].Value)))
+            if (Double.IsInfinity(Convert.ToDouble(FullDataResults[1, 19].Value)))
             {
                 this.Alpha_MDA_TB.Text = "Infinity";
             }
             else
             {
-                this.Alpha_MDA_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 15].Value);
+                this.Alpha_MDA_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 19].Value);
             }
             try
             {
                 //this.Beta_MDA_TB.Text = Convert.ToDecimal(FullDataResults[1, 16].Value).ToString("F");
-                this.Beta_MDA_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 16].Value);
+                this.Beta_MDA_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 20].Value);
             }
             catch { ;}
 
@@ -116,15 +116,15 @@ namespace DABRAS_Software
             //this.Beta_Count_TB.Text = String.Format("{0:G11}±{1:G5}", FullDataResults[1, 18].Value, FullDataResults[1, 20].Value);
             //this.Alpha_Count_TB.Text = String.Format("{0}±{1}", StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 17].Value),2), StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 19].Value), 2));
             //this.Beta_Count_TB.Text = String.Format("{0}±{1}", StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 18].Value), 2), StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 20].Value), 2));
-            this.Alpha_Count_TB.Text = String.Format("{0:0.00}±{1:0.00}", FullDataResults[1, 17].Value, FullDataResults[1, 19].Value);
-            this.Beta_Count_TB.Text = String.Format("{0:0.00}±{1:0.00}", FullDataResults[1, 18].Value, FullDataResults[1, 20].Value);
+            this.Alpha_Count_TB.Text = String.Format("{0:0.00}±{1:0.00}", FullDataResults[1, 13].Value, FullDataResults[1, 15].Value);
+            this.Beta_Count_TB.Text = String.Format("{0:0.00}±{1:0.00}", FullDataResults[1, 14].Value, FullDataResults[1, 16].Value);
 
             //this.LC_Alpha_TB.Text = String.Format("{0:G4}", FullDataResults[1, 13].Value);
             //this.LC_Beta_TB.Text = String.Format("{0:G4}", FullDataResults[1, 14].Value);
             //this.LC_Alpha_TB.Text = Convert.ToDecimal(FullDataResults[1, 13].Value).ToString("F");
             //this.LC_Beta_TB.Text = Convert.ToDecimal(FullDataResults[1, 14].Value).ToString("F");
-            this.LC_Alpha_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 13].Value);
-            this.LC_Beta_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 14].Value);
+            this.LC_Alpha_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 17].Value);
+            this.LC_Beta_TB.Text = String.Format("{0:0.00}", FullDataResults[1, 18].Value);
 
             //this.Alpha_GCPM_TB.Text = StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 7].Value), 2); //String.Format("{0:G8}", FullDataResults[1, 7].Value);
             //this.Beta_GCPM_TB.Text = StaticMethods.RoundToDecimal(Convert.ToDouble(FullDataResults[1, 8].Value), 2); //String.Format("{0:G8}", FullDataResults[1, 8].Value);
@@ -267,19 +267,18 @@ namespace DABRAS_Software
             FullDataResults.Rows.Add("Alpha Uncertainty (DPM)");
             FullDataResults.Rows.Add("Beta Uncertainty (DPM)");
 
-            FullDataResults.Rows.Add("Alpha Lc (NCPM)");
-            FullDataResults.Rows.Add("Beta Lc (NCPM)");
-            FullDataResults.Rows.Add("Alpha MDA (DPM)");
-            FullDataResults.Rows.Add("Beta MDA (DPM)");
             FullDataResults.Rows.Add("Net Alpha CPM");
             FullDataResults.Rows.Add("Net Beta CPM");
             FullDataResults.Rows.Add("Alpha Uncertainty (CPM)");
             FullDataResults.Rows.Add("Beta Uncertainty (CPM)");
 
+            FullDataResults.Rows.Add("Alpha Lc (NCPM)");
+            FullDataResults.Rows.Add("Beta Lc (NCPM)");
+            FullDataResults.Rows.Add("Alpha MDA (DPM)");
+            FullDataResults.Rows.Add("Beta MDA (DPM)");
+
             FullDataResults.Rows.Add("Alpha 4pi Efficiency (%)");
             FullDataResults.Rows.Add("Beta 4pi Efficiency (%)");
-            //FullDataResults.Rows.Add(String.Format("Selected Alpha Source: {0}", Alpha_ComboBox.Text));
-            //FullDataResults.Rows.Add(String.Format("Selected Beta Source: {0}", Beta_ComboBox.Text));
             FullDataResults.Rows.Add("Selected Alpha Source");
             FullDataResults.Rows.Add("Selected Beta Source");
 
@@ -308,6 +307,13 @@ namespace DABRAS_Software
             }
             FullDataResults.Rows[9].Cells[0].Style.BackColor = Color.Yellow;
             FullDataResults.Rows[10].Cells[0].Style.BackColor = Color.Yellow;
+            /*
+            FullDataResults.Rows[11].Cells[0].Style.BackColor = Color.LightBlue;
+            FullDataResults.Rows[12].Cells[0].Style.BackColor = Color.LightBlue;
+            FullDataResults.Rows[13].Cells[0].Style.BackColor = Color.Yellow;
+            FullDataResults.Rows[14].Cells[0].Style.BackColor = Color.Yellow;
+            FullDataResults.Rows[15].Cells[0].Style.BackColor = Color.LightBlue;
+            FullDataResults.Rows[16].Cells[0].Style.BackColor = Color.LightBlue;*/
 
             //Don't let the user edit the headertext (can't set whole table to readonly because need to be able to edit description cell
             for (int i = 0; i < FullDataResults.RowCount; i++)
@@ -1153,26 +1159,20 @@ namespace DABRAS_Software
 
                     DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 9];
                     DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 10];
-                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 11];
+                    DataGridViewCell AlphaUncertaintyDPMCell = FullResults_Table[1, 11];
                     DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 12];
                     AlphaActivityDPMCell.Style.BackColor = Color.Yellow;
                     BetaActivityDPMCell.Style.BackColor = Color.Yellow;
 
-                    /*
-                    DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 31];
-                    DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 32];
-                    DataGridViewCell AlphaActivityDPMCell = FullResults_Table[1, 33];
-                    DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 34];
-                    */
+                    DataGridViewCell NetAlphaCPMCell = FullResults_Table[1, 13];
+                    DataGridViewCell NetBetaCPMCell = FullResults_Table[1, 14];
+                    DataGridViewCell NetAlphaUncertaintyCell = FullResults_Table[1, 15];
+                    DataGridViewCell NetBetaUncertaintyCell = FullResults_Table[1, 16];
 
-                    DataGridViewCell AlphaLcCell = FullResults_Table[1, 13];
-                    DataGridViewCell BetaLcCell = FullResults_Table[1, 14];
-                    DataGridViewCell AlphaSrcMDACell = FullResults_Table[1, 15];
-                    DataGridViewCell BetaSrcMDACell = FullResults_Table[1, 16];
-                    DataGridViewCell NetAlphaCPMCell = FullResults_Table[1, 17];
-                    DataGridViewCell NetBetaCPMCell = FullResults_Table[1, 18];
-                    DataGridViewCell NetAlphaUncertaintyCell = FullResults_Table[1, 19];
-                    DataGridViewCell NetBetaUncertaintyCell = FullResults_Table[1, 20];
+                    DataGridViewCell AlphaLcCell = FullResults_Table[1, 17];
+                    DataGridViewCell BetaLcCell = FullResults_Table[1, 18];
+                    DataGridViewCell AlphaSrcMDACell = FullResults_Table[1, 19];
+                    DataGridViewCell BetaSrcMDACell = FullResults_Table[1, 20];
 
                     //Parse data to form
                     this.ElapsedTime = IncomingData.ElTime;
@@ -1250,7 +1250,7 @@ namespace DABRAS_Software
                             AlphaActivityDPMCell.Value = 0;
                         }
                         this.AlphaDPM = Convert.ToDouble(AlphaActivityDPMCell.Value)/(this.AlphaSelfAbsorbtion);
-                        AlphaUncetaintyDPMCell.Value = StaticMethods.RoundToDecimal(Math.Sqrt(Math.Abs(AlphaDPM)), 2);
+                        AlphaUncertaintyDPMCell.Value = StaticMethods.RoundToDecimal(Math.Sqrt(Math.Abs(AlphaDPM)), 2);
 
                         BetaActivityDPMCell.Value = StaticMethods.RoundToDecimal(Convert.ToDouble(NetBetaCPMCell.Value) * 100.0 / BetaEfficiency, 2);
                         if (Convert.ToDouble(BetaActivityDPMCell.Value) != Convert.ToDouble(BetaActivityDPMCell.Value))
