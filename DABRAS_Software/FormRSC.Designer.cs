@@ -1247,6 +1247,7 @@
             this.Controls.Add(this.labSampleDesc);
             this.Controls.Add(this.badge_TB);
             this.Controls.Add(this.lblSampleNo);
+            this.KeyPreview = true;
             this.Name = "FormRSC";
             this.Text = "Routine Sample Counting";
             this.EnabledChanged += new System.EventHandler(this.FormRSC_EnabledChanged);
