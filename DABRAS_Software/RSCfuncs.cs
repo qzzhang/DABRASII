@@ -306,6 +306,8 @@ namespace DABRAS_Software
                 FullDataResults.Rows.Add("Daily Background Alpha (CPM)");
                 FullDataResults.Rows.Add("Daily Background Beta (CPM)");
             }
+            FullDataResults.Rows[9].Cells[0].Style.BackColor = Color.Yellow;
+            FullDataResults.Rows[10].Cells[0].Style.BackColor = Color.Yellow;
 
             //Don't let the user edit the headertext (can't set whole table to readonly because need to be able to edit description cell
             for (int i = 0; i < FullDataResults.RowCount; i++)
@@ -665,7 +667,8 @@ namespace DABRAS_Software
                 }
                 else
                 {
-                    using (FileStream F = new FileStream(CustomFilePath, FileMode.Append))
+                    //using (FileStream F = new FileStream(CustomFilePath, FileMode.Append))
+                    using (FileStream F = new FileStream(CustomFilePath, FileMode.Create))
                     {
                         this.frmParent.GetLogger().WriteCSV(F, DataToWrite);
                     }
@@ -1152,6 +1155,9 @@ namespace DABRAS_Software
                     DataGridViewCell BetaActivityDPMCell = FullResults_Table[1, 10];
                     DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 11];
                     DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 12];
+                    AlphaActivityDPMCell.Style.BackColor = Color.Yellow;
+                    BetaActivityDPMCell.Style.BackColor = Color.Yellow;
+
                     /*
                     DataGridViewCell AlphaUncetaintyDPMCell = FullResults_Table[1, 31];
                     DataGridViewCell BetaUncertaintyDPMCell = FullResults_Table[1, 32];
